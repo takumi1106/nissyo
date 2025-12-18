@@ -1,0 +1,1931 @@
+@use "sass:math";
+
+// =================================================================
+//  Variables
+// =================================================================
+
+// --- Spacing ---
+$space-xs: 0.25rem; // 4px
+$space-s: 0.5rem; // 8px
+$space-m: 1rem; // 16px
+$space-l: 1.5rem; // 24px
+$space-xl: 2rem; // 32px
+$space-xxl: 2.5rem; // 40px
+$space-xxxl: 3rem; // 48px
+
+// --- Colors ---
+$color-text: #000;
+$color-base: #fff;
+$color-main: #CFEBF4;
+$color-main2: #6AB5CE;
+$color-bg: #9A9A9A;
+$color-hover: #ffdd44;
+
+// --- Typography ---
+$font-size-base: 16;
+$font-family-mincho-bold: "ShipporiMincho-Semi-Bold", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
+$font-family-mincho: "ShipporiMincho", "S", "Times New Roman", Times, "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
+
+// --- Breakpoints ---
+$breakpoints: (
+    "tablet": 391px,
+    "desktop": 769px
+);
+
+
+// =================================================================
+//  Functions
+// =================================================================
+
+// pxをremに変換する
+// @param {number} $px-value - px値
+// @return {string} - rem値
+@function rem($px-value) {
+    @return #{math.div($px-value, $font-size-base)}rem;
+}
+
+// XDのトラッキング値をemに変換する
+// @param {number} $xd-value - figmaのトラッキング値
+// @return {string} - em値
+@function ls($xd-value) {
+    @return #{math.div($xd-value, 100)}em;
+}
+
+
+// =================================================================
+//  Mixins
+// =================================================================
+
+// メディアクエリ (モバイルファースト)
+// @param {string} $breakpoint - $breakpointsのキー
+@mixin mq($breakpoint: desktop) {
+    @media (width >=map-get($breakpoints, $breakpoint)) {
+        @content;
+    }
+}
+
+// インナー幅の指定
+// @param {number} $mw - max-width
+// @param {number} $w  - width
+@mixin inner($mw-l: 900px, $mw-m: 450px, $mw-s: 342px, $w: percentage(math.div(342, 390))) {
+    max-width: $mw-s;
+    width: $w;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include mq(tablet) {
+        max-width: $mw-m;
+    }
+
+    @include mq(desktop) {
+        max-width: $mw-l;
+    }
+}
+
+@mixin result-title() {
+    position: relative;
+    margin-bottom: rem(50);
+    font-size: rem(20);
+    font-weight: 550;
+    text-shadow: rem(3) rem(3) rem(4) rgba(0, 0, 0, 0.25);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    column-gap: rem(20);
+    font-size: rem(20);
+    font-weight: 600;
+    text-align: center;
+
+    &::before,
+    &::after {
+        content: "";
+        height: 1px;
+        background-color: $color-text;
+        width: 100%;
+    }
+
+    @include mq(desktop) {
+        font-size: $space-xl;
+        margin-bottom: rem(100);
+    }
+}
+
+@mixin main-title() {
+    margin-bottom: rem(50);
+    padding: rem(10) 0;
+    font-size: rem(20);
+    font-weight: 550;
+    text-align: center;
+    background-color: $color-main;
+    position: relative;
+
+    @include mq(tablet) {
+        font-size: $space-l;
+        padding: rem(20) 0;
+    }
+
+    @include mq(desktop) {
+        margin-bottom: rem(100);
+        font-size: $space-xl;
+        margin-bottom: rem(100);
+    }
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: rem(40);
+        height: 1px;
+        background-color: $color-text;
+
+        @include mq(desktop) {
+            width: rem(200);
+        }
+    }
+
+    &::before {
+        left: 0;
+    }
+
+    &::after {
+        right: 0;
+    }
+}
+
+@mixin sub-title() {
+    display: block;
+    font-size: rem(12);
+    letter-spacing: ls(10);
+    color: $color-text;
+
+    @include mq(desktop) {
+        font-size: rem(14);
+    }
+}
+
+@mixin hero() {
+    background: url(../image/company-sp.jpg) no-repeat center/cover;
+    height: rem(290);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: rem(50);
+
+    &__overlay {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120%;
+        height: 80%;
+        background: rgba(207, 235, 244, 0.8);
+        border-bottom-left-radius: 50% 100%;
+        border-bottom-right-radius: 50% 100%;
+    }
+
+    &__title {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        background-color: $color-main2;
+        padding: rem(10) rem(30);
+        max-width: rem(500);
+        color: $color-base;
+        font-size: rem(20);
+
+        span {
+            display: block;
+            font-size: rem(10);
+            letter-spacing: ls(10);
+        }
+    }
+
+    @include mq(tablet) {
+        background: url(../image/company-ta.jpg) no-repeat center/cover;
+        height: rem(400);
+
+        &__overlay {
+            height: 75%;
+        }
+
+        &__title {
+            font-size: rem(26);
+            padding: rem(15) rem(35);
+
+            span {
+                font-size: rem(12);
+            }
+        }
+    }
+
+    @include mq(desktop) {
+        background: url(../image/company-img.jpg) no-repeat center/cover;
+        height: rem(445);
+        margin-bottom: rem(100);
+
+        &__overlay {
+            height: 80%;
+        }
+
+        &__title {
+            font-size: $space-xl;
+            padding: rem(20) rem(100);
+
+            span {
+                font-size: rem(14);
+                letter-spacing: ls(20);
+            }
+        }
+    }
+}
+
+@mixin item() {
+    &__title {
+        display: inline-block;
+        margin-bottom: rem(20);
+        padding: 0 rem(10) 0 0;
+        font-weight: 550;
+        font-size: rem(18);
+
+        @include mq(desktop) {
+            margin-bottom: 0;
+        }
+    }
+
+    &__required {
+        background-color: #FF0000;
+        width: rem(50);
+        height: rem(23);
+        color: $color-base;
+        padding: rem(2) rem(5);
+        text-align: center;
+    }
+}
+
+@mixin contact-item() {
+    border-bottom: 1px solid #9A9A9A;
+    padding: 0 rem(10) rem(30);
+    margin-bottom: rem(30);
+
+    @include mq(desktop) {
+        padding: 0 rem(35) rem(30);
+    }
+}
+
+/* ----------------------------- ここまで ---------------------------- */
+
+// =========================================================================
+// common
+// =========================================================================
+body {
+    font-size: rem($font-size-base);
+    font-weight: normal;
+    font-family: $font-family-mincho;
+    line-height: math.div(23, 16);
+    color: $color-text;
+
+    @include mq(desktop) {
+        letter-spacing: ls(10);
+    }
+}
+
+img {
+    max-width: 100%;
+    margin: auto;
+    vertical-align: bottom;
+}
+
+.sub--title {
+    @include sub-title();
+}
+
+/* ---------------------- ローディング画面 ------------------------------ */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $color-main2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+// 内側（ロゴ＋テキスト縦並び）
+.loading-inner {
+    text-align: center;
+}
+
+// ロゴ
+.loading-logo {
+    width: rem(200);
+    margin-bottom: rem(30);
+
+    @include mq(tablet) {
+        width: rem(250);
+        margin-bottom: rem(40);
+    }
+
+    @include mq(desktop) {
+        width: rem(300);
+        margin-bottom: rem(50);
+    }
+}
+
+// テキスト
+.loading-text {
+    font-size: rem(18);
+    color: #fff;
+
+    @include mq(tablet) {
+        font-size: rem(22);
+    }
+
+    @include mq(desktop) {
+        font-size: $space-l;
+    }
+
+    // 点（...）アニメーション
+    .dot {
+        opacity: 0;
+        animation: blink 1.5s infinite;
+
+        &:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        &:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        &:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+    }
+}
+
+// アニメーション
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 0;
+    }
+
+    70%,
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes blink {
+
+    0%,
+    20% {
+        opacity: 0;
+    }
+
+    50%,
+    100% {
+        opacity: 1;
+    }
+}
+
+/* ------------------------------- ここまで --------------------------- */
+
+/* ------------------------------ ボタン -------------------------------*/
+.btn {
+    position: relative;
+    width: fit-content;
+    margin-top: rem(20);
+    margin-left: auto;
+
+    &__link {
+        position: relative;
+        display: inline-block;
+        font-size: rem(14);
+        color: #000;
+        padding-bottom: rem(6);
+        padding-left: rem(40);
+        text-decoration: none;
+        z-index: 1;
+    }
+
+    &__link span {
+        font-weight: 550;
+        display: inline-block;
+        transform: translateX(rem(-35));
+    }
+
+    &__link::before {
+        content: "";
+        position: absolute;
+        left: rem(-10);
+        bottom: 0;
+        width: rem(140);
+        height: rem(1);
+        background: #000;
+    }
+
+    &__link::after {
+        content: "";
+        position: absolute;
+        left: rem(130);
+        bottom: 0;
+        width: rem(30);
+        height: rem(1);
+        transform-origin: left bottom;
+        transform: rotate(-125deg);
+        background: #000;
+    }
+
+    &__circle {
+        position: absolute;
+        right: rem(0);
+        bottom: rem(-15);
+        width: rem(35);
+        height: rem(35);
+        background: rgba(207, 235, 244, 0.7);
+        border-radius: 50%;
+        z-index: 5;
+        transition: transform 0.5s ease, 0.5s ease;
+    }
+
+    &:hover .btn__link {
+        color: #ff4d7a;
+        transition: 0.5s;
+    }
+
+    &:hover .btn__circle {
+        animation: spinColor 0.9s ease forwards;
+        transform: scale(1.33);
+        background: rgba(106, 181, 206, 0.5);
+    }
+
+    :focus-visible {
+        outline: 2px solid;
+        color: #ff4d7a;
+    }
+}
+
+/* -------------------------- ここまで ----------------------------------- */
+
+/* --------------------- トップ以外のメインヴィジュアル ---------------------- */
+.hero {
+    @include hero();
+}
+
+/* -----------------------------ここまで--------------------------------- */
+
+/* ---------------------- ふわっとなるアニメーション ---------------------- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.fade-in.in-view {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+
+/* -------------------------- ここまで ----------------------------------*/
+
+.card {
+    &__title {
+        font-size: rem(20);
+        font-weight: 550;
+        margin-bottom: rem(10);
+    }
+
+    &__pic {
+        margin-bottom: rem(10);
+
+        img {
+            box-shadow: 0 8px 10px -3px rgba(0, 0, 0, 0.3);
+            width: rem(470);
+            height: rem(265);
+        }
+    }
+
+    @include mq(desktop) {
+        max-width: rem(470);
+        max-height: rem(430);
+    }
+}
+
+.list {
+    font-size: rem(18);
+    display: grid;
+    row-gap: rem(25);
+
+    &__item {
+        padding-left: rem(30);
+        background: url(../image/triangle.svg) no-repeat top left;
+        background-size: rem(17);
+    }
+
+    &__spacer {
+        display: block;
+        height: rem(10);
+    }
+}
+
+input {
+    width: 100%;
+    max-width: rem(580);
+    height: rem(40);
+    background-color: #F1F1F1;
+    border: 2px solid #D9D9D9;
+    padding: rem(9);
+
+    &::placeholder {
+        color: #9A9A9A;
+    }
+
+    &:focus::placeholder {
+        color: transparent;
+    }
+}
+
+/* -------------------------- header ------------------------------------ */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: $space-m 0;
+    background-color: rgba(50, 105, 170, .9);
+    transition: transform 0.3s ease;
+    z-index: 900;
+
+    &.hide {
+        transform: translateY(-100%);
+    }
+
+    &__inner {
+        @include inner();
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: rem(20);
+
+        @include mq(tablet) {
+            @include inner($mw-m: 800px);
+        }
+
+        @include mq(desktop) {
+            gap: rem(30);
+            @include inner($mw-l: 1200px);
+        }
+    }
+
+    &__logo {
+        :focus-visible {
+            outline: 2px solid;
+            color: #F4A261;
+        }
+    }
+}
+
+.gnav {
+    &__list {
+        display: none; // 初期は非表示（モバイルではハンバーガーを使う）
+        align-items: center;
+        color: $color-base;
+        font-weight: 550;
+
+        @include mq(desktop) {
+            display: flex; // デスクトップで文字メニュー表示
+            gap: rem(math.div(510, 20));
+            font-size: rem(14);
+        }
+    }
+
+    &__item a:hover {
+        border-top: 1px solid $color-base;
+        border-bottom: 1px solid $color-base;
+        padding-top: rem(8);
+        padding-bottom: rem(8);
+        color: $color-hover;
+        transition: 0.3s;
+    }
+
+    :focus-visible {
+        outline: 1px solid;
+        color: #F4A261;
+    }
+}
+
+#top .gnav__item:nth-child(1) a,
+#service .gnav__item:nth-child(2) a,
+#project .gnav__item:nth-child(3) a,
+#client .gnav__item:nth-child(4) a,
+#contact .gnav__item:nth-child(5) a {
+    border-top: 1px solid $color-base;
+    border-bottom: 1px solid $color-base;
+    padding-top: rem(8);
+    padding-bottom: rem(8);
+    color: #ffdd44;
+    pointer-events: none;
+}
+
+/* ---------------------- ハンバーガーメニュー ------------------------------*/
+.hamburger-morph {
+    position: fixed;
+    top: rem(16);
+    right: rem(20);
+    z-index: 2001;
+    width: rem(44);
+    height: rem(44);
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    @include mq(tablet) {
+        top: rem(14);
+        right: rem(40);
+        width: rem(60);
+        height: rem(60);
+    }
+
+    &__icon {
+        width: 100%;
+        height: 100%;
+    }
+
+    &__line {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 6;
+        transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+            stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+
+        &:nth-child(1) {
+            stroke-dasharray: 60 207;
+        }
+
+        &:nth-child(2) {
+            stroke-dasharray: 60 60;
+        }
+
+        &:nth-child(3) {
+            stroke-dasharray: 60 207;
+        }
+    }
+
+    &.active {
+        & .hamburger-morph__line:nth-child(1) {
+            stroke-dasharray: 90 207;
+            stroke-dashoffset: -134;
+        }
+
+        & .hamburger-morph__line:nth-child(2) {
+            stroke-dasharray: 1 60;
+            stroke-dashoffset: -30;
+        }
+
+        & .hamburger-morph__line:nth-child(3) {
+            stroke-dasharray: 90 207;
+            stroke-dashoffset: -134;
+        }
+    }
+
+    @include mq(desktop) {
+        display: none;
+    }
+}
+
+.nav-morph {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(29, 29, 31, 0.98);
+    clip-path: circle(0% at calc(100% - 44px) 44px);
+    transition: clip-path 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+
+    &.active {
+        clip-path: circle(150% at calc(100% - 44px) 44px);
+    }
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background-color: $color-main2;
+    }
+
+    &__list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-align: center;
+    }
+
+    &__item {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+
+        @include mq(desktop) {
+            display: none;
+        }
+
+        @for $i from 1 through 4 {
+            &:nth-child(#{$i}) {
+                transition-delay: 0s;
+            }
+        }
+
+        .nav-morph.active & {
+            opacity: 1;
+            transform: translateY(0);
+
+            &:nth-child(1) {
+                transition-delay: 0.6s;
+            }
+
+            &:nth-child(2) {
+                transition-delay: 0.6s;
+            }
+
+            &:nth-child(3) {
+                transition-delay: 0.6s;
+            }
+
+            &:nth-child(4) {
+                transition-delay: 0.6s;
+            }
+
+            &:nth-child(5) {
+                transition-delay: 0.6s;
+            }
+        }
+    }
+
+    &__link {
+        position: relative;
+        display: inline-block;
+        padding: 20px;
+        font-size: 28px;
+        color: #fff;
+        text-decoration: none;
+        overflow: hidden;
+
+        .nav-morph__text,
+        .nav-morph__hover {
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-morph__hover {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            transform: translateY(0%);
+        }
+
+        &:hover {
+            .nav-morph__text {
+                transform: translateY(-100%);
+            }
+
+            .nav-morph__hover {
+                transform: translateY(-100%);
+            }
+        }
+    }
+}
+
+/* ----------------------------- ここまで -------------------------------- */
+
+/* ----------------------------- footer --------------------------------- */
+.footer {
+    background-color: $color-main2;
+    padding: rem(30) 0;
+
+    &__inner {
+        @include inner();
+    }
+
+    &__logo {
+        text-align: center;
+        display: block;
+        padding-bottom: rem(50);
+    }
+
+    &__list {
+        display: grid;
+        row-gap: rem(20);
+        max-width: rem(286);
+        font-size: rem(14);
+        padding-bottom: rem(50);
+
+        .label {
+            font-weight: bold;
+        }
+    }
+
+    &__button {
+        display: block;
+        text-align: center;
+        width: rem(200);
+        height: rem(40);
+        padding: rem(10) rem(45);
+        color: $color-base;
+        background-color: #E76F51;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: rem(50);
+        border: 1px solid $color-base;
+
+        @include mq(desktop) {
+            width: rem(290);
+            height: rem(60);
+            padding: rem(20) rem(10);
+        }
+    }
+
+    &__button:hover {
+        background-color: #D65A3A;
+        transition: 0.3s;
+    }
+
+    &__copy {
+        display: block;
+        text-align: center;
+    }
+
+    @include mq(tablet) {
+        padding: rem(60) 0;
+
+        &__grid {
+            display: grid;
+            grid-auto-flow: column;
+            margin-left: auto;
+            margin-right: auto;
+            align-items: center;
+            padding-bottom: $space-xxl;
+            max-width: rem(575);
+        }
+
+        &__logo {
+            display: grid;
+            justify-items: center;
+            max-width: rem(120);
+            padding-bottom: 0;
+        }
+
+        &__list {
+            padding-bottom: 0;
+            max-width: rem(400);
+        }
+    }
+
+    /* キーボードでフォーカスした時だけ有効 */
+    :focus-visible {
+        outline: 5px solid;
+        color: #264653;
+    }
+}
+
+/* ----------------------------- ここまで -------------------------------- */
+
+//=========================================================================
+// index.html
+//=========================================================================
+
+/* --------------------------- mainvisual ------------------------------ */
+.mainvisual {
+    position: relative;
+    background: url(../image/exterior-sp.jpg) no-repeat center /cover;
+    padding: rem(280) 0 rem(300);
+    margin-bottom: rem(50);
+    color: $color-base;
+    font-weight: 550; //Semi-Boldの代用
+
+    @include mq(tablet) {
+        background: url(../image/exterior.jpg) no-repeat center /cover;
+        padding: rem(280) 0 rem(300);
+        margin-bottom: rem(100);
+    }
+
+    &__inner {
+        @include inner;
+    }
+
+    &__title {
+        font-size: rem(28);
+        margin-bottom: rem(20);
+
+        @include mq(tablet) {
+            font-size: rem(34);
+        }
+
+        @include mq(desktop) {
+            font-size: $space-xxxl;
+            text-align: center;
+        }
+    }
+
+    &__lead {
+        font-size: rem(18);
+        margin-bottom: rem(60);
+
+        @include mq(tablet) {
+            font-size: rem(22);
+        }
+
+        @include mq(desktop) {
+            font-size: rem(28);
+            text-align: center;
+        }
+    }
+}
+
+.news-card {
+    position: absolute;
+    left: 50%;
+    bottom: rem(80);
+    transform: translateX(-50%);
+    width: calc(100% - #{rem(40)});
+    max-width: rem(300);
+    border-radius: rem(16);
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(6px);
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    @include mq(tablet) {
+        max-width: rem(550);
+    }
+
+    @include mq(desktop) {
+        max-width: rem(1100);
+    }
+
+    &__inner {
+        max-height: rem(150);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        @include mq(desktop) {
+            max-height: none; // ← 制限解除
+            height: auto; // ← 念のため
+            overflow-y: visible; // ← スクロール無効
+        }
+    }
+}
+
+.news-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.news-item {
+    padding: rem(16) rem(24);
+    display: flex;
+    flex-direction: column;
+    gap: rem(6);
+
+    &+& {
+        border-top: 1px solid rgba(0, 0, 0, 0.15);
+    }
+
+    &__date {
+        font-size: rem(14);
+        opacity: 0.7;
+        white-space: nowrap;
+    }
+
+    &__title {
+        font-size: rem(16);
+        font-weight: 550;
+        line-height: 1.5;
+    }
+
+    &__text {
+        font-size: rem(16);
+        line-height: 1.6;
+    }
+
+    @include mq(desktop) {
+        flex-direction: row;
+        /* PCでは横並び */
+        align-items: center;
+        gap: rem(16);
+
+        &__date {
+            width: rem(80);
+            flex-shrink: 0;
+        }
+
+        &__title {
+            flex: 1;
+        }
+
+        &__text {
+            flex: 2;
+        }
+    }
+}
+
+/* ----------------------------- ここまで ---------------------------------*/
+
+/* ---------------------------- result ---------------------------------- */
+.result {
+    @include mq(desktop) {
+        margin-bottom: rem(100);
+    }
+
+    &__inner {
+        @include inner;
+    }
+
+    &__title {
+        @include result-title;
+    }
+
+    &__text {
+        position: relative;
+        margin-bottom: rem(50);
+        background-color: transparent;
+        background-blend-mode: lighten;
+
+        p {
+            z-index: 1;
+        }
+    }
+
+    &__picture {
+        position: relative;
+        margin: 0;
+        margin-bottom: rem(130);
+
+        @include mq(desktop) {
+            margin-bottom: rem(100);
+        }
+
+        img {
+            width: 50%;
+            box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .front {
+            position: relative;
+            z-index: 2;
+        }
+
+        .back {
+            position: absolute;
+            top: rem(75);
+            right: rem(40);
+            z-index: 1;
+
+            @include mq(tablet) {
+                top: rem(80);
+                right: rem(30);
+            }
+
+            @include mq(desktop) {
+                top: rem(115);
+                right: rem(20);
+            }
+        }
+    }
+
+    &__grid {
+        @include mq(desktop) {
+            display: grid;
+            grid-template-columns: 1fr percentage(math.div(400, 1040));
+            justify-content: space-between;
+            max-width: rem(1040);
+            align-items: center;
+            column-gap: 5%;
+        }
+    }
+}
+
+/* ------------------------------ ここまで ----------------------------- */
+
+/* ---------------------------- service ------------------------------ */
+.service {
+    margin-bottom: rem(50);
+
+    @include mq(desktop) {
+        margin-bottom: rem(100);
+    }
+
+    &__title {
+        @include main-title;
+    }
+
+    &__inner {
+        @include inner;
+    }
+
+    &__list {
+        display: grid;
+        row-gap: rem(50);
+
+        @include mq(desktop) {
+            column-gap: percentage(math.div(115, 1040));
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}
+
+/* --------------------------------- ここまで --------------------------- */
+
+.card {
+    &__pic img {
+        box-shadow: 0 8px 10px -3px rgba(0, 0, 0, 0.3);
+
+        @include mq(desktop) {
+            width: 100%;
+        }
+    }
+
+    @include mq(desktop) {
+        max-width: rem(470);
+        max-height: rem(430);
+    }
+}
+
+/* --------------------------- projects -------------------------------- */
+.projects {
+    background: url(../image/back-img.jpg) no-repeat center /cover;
+
+    &__title {
+        @include main-title();
+    }
+
+    &__inner {
+        @include inner;
+
+        @include mq(desktop) {
+            padding-bottom: rem(100);
+        }
+    }
+
+    &__text {
+        margin-bottom: rem(30);
+
+        @include mq(desktop) {
+            margin-bottom: rem(50);
+        }
+    }
+
+    &__image {
+        box-shadow: 0 8px 10px -3px rgba(0, 0, 0, 0.3);
+    }
+
+    &__back {
+        padding: rem(20) rem(20) rem(35);
+        margin-bottom: rem(50);
+        background-color: #fff;
+
+        @include mq(desktop) {
+            padding: rem(30);
+            max-height: rem(380);
+            margin-bottom: 0;
+        }
+    }
+
+    &__grid {
+        display: grid;
+        row-gap: rem(50);
+
+        @include mq(desktop) {
+            grid-template-columns: 1fr percentage(math.div(570, 1040));
+            column-gap: percentage(math.div(115, 1040));
+            align-items: center;
+        }
+    }
+}
+
+/* ----------------------------- ここまで -------------------------------- */
+
+/* ----------------------------- clients -------------------------------- */
+.clients {
+    margin-bottom: rem(50);
+
+    @include mq(desktop) {
+        margin-bottom: rem(100);
+    }
+
+    &__title {
+        @include main-title;
+    }
+
+    &__inner {
+        @include inner;
+    }
+
+    &__pic {
+        margin-bottom: rem(30);
+        box-shadow: 0 8px 10px -3px rgba(0, 0, 0, 0.3);
+    }
+
+    &__grid {
+        display: grid;
+        row-gap: rem(50);
+
+        @include mq(desktop) {
+            grid-template-columns: percentage(math.div(570, 1040)) 1fr;
+            column-gap: percentage(math.div(115, 1040));
+            align-items: center;
+            grid-template-areas: "group pic";
+        }
+    }
+
+    &__list {
+        grid-area: auto;
+
+        @include mq(desktop) {
+            grid-area: list;
+        }
+    }
+
+    &__pic {
+        grid-area: auto;
+
+        @include mq(desktop) {
+            grid-area: pic;
+        }
+    }
+}
+
+/* --------------------------- ここまで -------------------------------- */
+
+/* ---------------------------- access -------------------------------- */
+.access {
+    margin-bottom: rem(50);
+    font-size: rem(18);
+
+    @include mq(desktop) {
+        margin-bottom: rem(100);
+    }
+
+    @include mq(desktop) {
+        margin-bottom: rem(100);
+    }
+
+    &__title {
+        @include main-title;
+    }
+
+    &__inner {
+        @include inner();
+        display: grid;
+        row-gap: rem(30);
+
+        @include mq(desktop) {
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: percentage(math.div(100, 1040));
+            align-items: center;
+        }
+    }
+
+    &__list {
+        display: grid;
+        row-gap: rem(20);
+
+        span {
+            font-weight: 600;
+        }
+    }
+
+    &__map {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%;
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    }
+}
+
+/* ----------------------------- ここまで -------------------------------- */
+
+//=========================================================================
+// service.html
+//=========================================================================
+.service-hero {
+    @include hero();
+}
+
+/* ---------------------------- procssing ------------------------------ */
+.service-processing {
+    margin-bottom: rem(50);
+
+    @include mq(desktop) {
+        margin-bottom: rem(100);
+    }
+
+    &__title {
+        @include main-title();
+    }
+
+    &__inner {
+        @include inner();
+    }
+
+    &__list {
+        display: grid;
+        row-gap: rem(50);
+        grid-area: auto;
+
+        @include mq(desktop) {
+            grid-area: list;
+        }
+    }
+
+    &__item {
+        @include mq(desktop) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: percentage(math.div(100, 1040));
+            max-width: rem(1040);
+            align-items: center;
+            grid-template-areas: "pic text";
+        }
+
+        &:last-child {
+            @include mq(desktop) {
+                grid-template-areas: "text pic";
+            }
+        }
+    }
+
+    .card__pic {
+        @include mq(desktop) {
+            grid-area: pic;
+        }
+    }
+
+    .card__text {
+        @include mq(desktop) {
+            grid-area: text;
+        }
+    }
+}
+
+/* ----------------------------- ここまで ------------------------------- */
+
+/* --------------------------- attachment ------------------------------- */
+.service--attachment {
+    margin-bottom: rem(50);
+
+    @include mq(desktop) {
+        margin-bottom: rem(100);
+    }
+
+    &__title {
+        @include main-title();
+    }
+
+    &__inner {
+        @include inner();
+    }
+
+    &__list {
+        display: grid;
+        row-gap: rem(50);
+        grid-area: auto;
+
+        @include mq(desktop) {
+            grid-area: list;
+        }
+    }
+
+    &__item {
+        @include mq(desktop) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: percentage(math.div(100, 1040));
+            max-width: rem(1040);
+            align-items: center;
+            grid-template-areas: "pic text";
+        }
+
+        &:last-child {
+            @include mq(desktop) {
+                grid-template-areas: "text pic";
+            }
+        }
+    }
+
+    .card__pic {
+        @include mq(desktop) {
+            grid-area: pic;
+        }
+    }
+
+    .card__text {
+        @include mq(desktop) {
+            grid-area: text;
+        }
+    }
+}
+
+/* ---------------------------- ここまで --------------------------------- */
+
+//=========================================================================
+// project.html
+//=========================================================================
+.project-hero {
+    @include hero();
+}
+
+/* ------------------------------ history ------------------------------*/
+.history {
+    &__title {
+        @include main-title();
+    }
+
+    &__inner {
+        @include inner();
+    }
+
+    &__text {
+        margin-bottom: rem(50);
+
+        @include mq(desktop) {
+            margin-bottom: rem(100);
+        }
+    }
+}
+
+/* ------------------------------ project ------------------------------*/
+.project {
+    margin-bottom: rem(50);
+
+    &__pic {
+        box-shadow: 0 8px 10px -3px rgba(0, 0, 0, 0.3);
+    }
+
+    &__img {
+        width: rem(180);
+        height: rem(100);
+        margin-top: rem(10);
+    }
+
+    @include mq(desktop) {
+        margin-bottom: rem(60);
+    }
+
+    &__title {
+        @include main-title();
+    }
+
+    &__inner {
+        display: grid;
+        @include inner();
+
+        @include mq(desktop) {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    &__group1 {
+        margin-bottom: rem(40);
+
+        .project__list {
+            row-gap: rem(40);
+
+            @include mq(tablet) {
+                justify-content: center;
+                row-gap: rem(60);
+            }
+
+            @include mq(desktop) {
+                row-gap: rem(75);
+
+                img {
+                    max-width: 80%;
+                }
+            }
+        }
+    }
+
+    &__group2 {
+        .project__list {
+            row-gap: rem(40);
+
+            @include mq(tablet) {
+                justify-content: center;
+                row-gap: rem(60);
+            }
+
+            @include mq(desktop) {
+                justify-content: center;
+
+                row-gap: rem(75);
+
+                img {
+                    max-width: 80%;
+                }
+            }
+        }
+    }
+}
+
+/* -------------------------- ここまで ----------------------------------- */
+
+//=========================================================================
+// client.html
+//=========================================================================
+.client-hero {
+    @include hero();
+}
+
+/* --------------------------- client ----------------------------------- */
+.client {
+    margin-bottom: rem(50);
+
+    @include mq(desktop) {
+        margin-bottom: rem(60);
+    }
+
+    &__title {
+        @include main-title();
+    }
+
+    &__inner {
+        display: grid;
+        @include inner();
+
+        @include mq(desktop) {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    &__group1 {
+        margin-bottom: rem(40);
+
+        .clients__list {
+            row-gap: rem(40);
+
+            @include mq(tablet) {
+                justify-content: center;
+            }
+
+            @include mq(desktop) {
+                row-gap: rem(75);
+            }
+        }
+    }
+
+    &__group2 {
+        .clients__list {
+            row-gap: rem(40);
+
+            @include mq(tablet) {
+                justify-content: center;
+            }
+
+            @include mq(desktop) {
+                justify-content: center;
+                row-gap: rem(75)
+            }
+        }
+    }
+}
+
+/* ------------------------------- ここまで ----------------------------- */
+
+//=========================================================================
+// contact.html
+//=========================================================================
+.contact-hero {
+    @include hero();
+
+    @include mq(tablet) {
+        &__title {
+            padding: rem(15) rem(30);
+        }
+    }
+
+    @include mq(desktop) {
+        &__title {
+            padding: rem(20) rem(80);
+        }
+    }
+}
+
+.item {
+    @include item();
+}
+
+/* ---------------------------- contact -------------------------------- */
+.contact {
+    &__inner {
+        @include inner();
+    }
+
+    &__btn {
+        display: block;
+        width: rem(150);
+        height: rem(50);
+        border: 1px solid $color-text;
+        padding: rem(15) rem(50);
+        text-align: center;
+        margin: 0 auto rem(100);
+        transition: 0.3s;
+        cursor: pointer;
+
+        &:hover,
+        &:focus-visible {
+            background-color: $color-main2;
+            color: $color-base;
+            outline: none;
+        }
+    }
+}
+
+/* ------------------------------- ここまで ------------------------------ */
+
+/* ------------------------- content ----------------------------------- */
+.content {
+    display: grid;
+    margin-bottom: rem(30);
+    padding: 0 rem(10) rem(30);
+    border-bottom: 1px solid #9A9A9A;
+
+    .item {
+        padding: 0 rem(10) 0 0;
+    }
+
+    @include mq(desktop) {
+        grid-template-columns: rem(250) 1fr;
+        padding: 0 rem(35) rem(30);
+    }
+
+    &__options {
+        display: grid;
+        row-gap: rem(25);
+
+        @include mq(tablet) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @include mq(desktop) {
+            column-gap: percentage(math.div(20, 560));
+            grid-auto-flow: column;
+            align-items: center;
+        }
+
+        & label {
+            display: flex;
+            align-items: center;
+            column-gap: rem(5);
+        }
+    }
+
+    &__check {
+        width: rem(21);
+        height: rem(21);
+        background-color: #F1F1F1;
+        border: 1px solid #D9D9D9;
+        cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+        position: relative; // ここは絶対必要
+
+        &:checked {
+            background-color: $color-main2; // チェック時の色
+            border-color: $color-main2;
+        }
+
+        &:checked::after {
+            content: "✓";
+            color: $color-base;
+            font-size: rem(15);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+
+.content__options label {
+    display: flex;
+    align-items: center;
+    column-gap: rem(5);
+
+    &:focus-within {
+        outline: 2px solid #000;
+        outline-offset: 2px;
+    }
+}
+
+/* -------------------------- ここまで --------------------------------- */
+
+.name,
+.company-name,
+.tellphone,
+.phone,
+.address {
+    @include contact-item();
+
+    .item__title {
+        padding: 0 rem(10) 0 0;
+    }
+
+    @include mq(desktop) {
+        display: grid;
+        grid-template-columns: rem(218) 1fr;
+        gap: percentage(math.div(35, 830));
+        align-items: center;
+
+        .form__item {
+            display: flex;
+            align-items: center;
+            min-width: max-content;
+        }
+    }
+}
+
+/* ------------------------- お問い合わせ本文 ----------------------------- */
+.contact-main-text {
+    @include contact-item();
+    display: grid;
+    margin-bottom: rem(50);
+    align-items: center;
+
+    textarea {
+        max-width: rem(580);
+        width: 100%;
+        height: rem(160);
+        background-color: #F1F1F1;
+        border: 2px solid #D9D9D9;
+        padding: rem(9);
+
+        &::placeholder {
+            color: #9A9A9A;
+        }
+
+        &:focus::placeholder {
+            color: transparent;
+        }
+    }
+
+    @include mq(desktop) {
+        column-gap: percentage(math.div(35, 830));
+        grid-template-columns: rem(218) 1fr;
+    }
+}
+
+/* --------------------------------- ここまで ---------------------------- */
+
+/* --------------------------------- confirm ---------------------------- */
+.confirm {
+    &__title {
+        @include main-title();
+    }
+
+    &__lead {
+        margin-bottom: rem(30);
+
+        @include mq(tablet) {
+            text-align: center;
+            margin-bottom: rem(50);
+        }
+    }
+
+    &__buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: rem(20);
+    }
+}
+
+/* --------------------------------- ここまで ---------------------------- */
+
+//=========================================================================
+// thanks.html
+//=========================================================================
+.wrapper {
+    &__inner {
+        @include inner();
+    }
+
+    &__title {
+        font-size: rem(20);
+        margin-bottom: rem(30);
+        text-align: center;
+        font-weight: 550;
+    }
+
+    &__text {
+        text-align: center;
+        margin-bottom: rem(50);
+    }
+
+    &__btn {
+        display: block;
+        width: rem(180);
+        height: rem(50);
+        border: 1px solid $color-text;
+        padding: rem(15) rem(50);
+        text-align: center;
+        margin: 0 auto rem(100);
+
+        &:hover {
+            background-color: $color-main2;
+            transition: 0.3s;
+            color: $color-base;
+        }
+    }
+}
+
+/* ------------------------- ここまで ------------------------------- */
+
+//=========================================================================
+// 404.html
+//=========================================================================
+.error-404 {
+    &__inner {
+        @include inner();
+    }
+
+    &__code {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: rem(80);
+        padding-top: rem(100);
+        margin-bottom: rem(-value);
+
+        @include mq(tablet) {
+            padding-top: rem(125);
+        }
+
+        @include mq(desktop) {
+            font-size: rem(90);
+            padding-top: rem(150);
+        }
+    }
+
+    &__title {
+        font-size: rem(18);
+        font-weight: 550;
+        text-align: center;
+        margin-bottom: rem(30);
+    }
+
+    &__text {
+        text-align: center;
+        margin-bottom: rem(30);
+    }
+
+    &__btn {
+        display: block;
+        width: rem(180);
+        height: rem(50);
+        border: 1px solid $color-text;
+        padding: rem(15) rem(50);
+        text-align: center;
+        margin: 0 auto rem(100);
+
+        &:hover,
+        &:focus-visible {
+            background-color: $color-main2;
+            color: $color-base;
+            outline: none;
+            transition: 0.3s;
+        }
+    }
+}
+
+/* フォーカス */
+/* マウスでクリックした時は無効 */
+:focus {
+    outline: none;
+}

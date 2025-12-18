@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日昇工業所|お問い合わせ</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/the-new-css-reset/css/reset.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <meta name="robots" content="noindex">
+</head>
+
+<body id="contact">
+    <div id="loading-screen">
+        <div class="loading-inner">
+            <img src="image/header_logo.svg" alt="日昇工業所のロゴ" class="loading-logo">
+            <p class="loading-text">読み込み中<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
+            </p>
+        </div>
+    </div>
+    <header class="header">
+        <div class="header__inner">
+            <h1 class="header__logo">
+                <a href="index.html">
+                    <picture class="header__pic">
+                        <source media="(min-width: 769px)" srcset="image/header_logo.svg">
+                        <source media="(min-width: 391px)" srcset="image/header_log-tab.svg">
+                        <source media="(max-width: 390px)" srcset="image/header_logo-sp.svg">
+                        <img src="image/header_logo.svg" alt="日昇工業所のロゴ">
+                    </picture>
+                </a>
+            </h1>
+            <nav class="gnav">
+                <ul class="gnav__list">
+                    <li class="gnav__item"><a href="index.html">トップページ</a></li>
+                    <li class="gnav__item"><a href="service.html">業務内容</a></li>
+                    <li class="gnav__item"><a href="project.html">施工事例</a></li>
+                    <li class="gnav__item"><a href="client.html">主要取引先</a></li>
+                    <li class="gnav__item"><a href="contact.html">お問い合わせ</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger-morph" aria-label="メニュー" aria-controls="morph-menu" aria-expanded="false">
+                <svg class="hamburger-morph__icon" width="48" height="48" viewBox="0 0 100 100">
+                    <path class="hamburger-morph__line"
+                        d="M 20,29 H 80 C 80,29 94.5,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
+                    <path class="hamburger-morph__line" d="M 20,50 H 80" />
+                    <path class="hamburger-morph__line"
+                        d="M 20,71 H 80 C 80,71 94.5,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
+                </svg>
+            </button>
+
+            <nav id="morph-menu" class="nav-morph" aria-hidden="true">
+                <div class="nav-morph__wrapper">
+                    <ul class="nav-morph__list">
+                        <li class="nav-morph__item">
+                            <a href="index.html" class="nav-morph__link">
+                                <span class="nav-morph__text">トップページ</span>
+                                <span class="nav-morph__hover">TOP</span>
+                            </a>
+                        </li>
+                        <li class="nav-morph__item">
+                            <a href="service.html" class="nav-morph__link">
+                                <span class="nav-morph__text">業務内容</span>
+                                <span class="nav-morph__hover">SERVICES</span>
+                            </a>
+                        </li>
+                        <li class="nav-morph__item">
+                            <a href="project.html" class="nav-morph__link">
+                                <span class="nav-morph__text">施工事例</span>
+                                <span class="nav-morph__hover">PROJECTS</span>
+                            </a>
+                        </li>
+                        <li class="nav-morph__item">
+                            <a href="client.html" class="nav-morph__link">
+                                <span class="nav-morph__text">主要取引先</span>
+                                <span class="nav-morph__hover">CLIENTS</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="contact-hero">
+            <div class="contact-hero__overlay"></div>
+            <h2 class="contact-hero__title">お問い合わせ<br><span>CONTACT</span></h2>
+        </section>
+        <section class="result">
+            <div class="result__inner">
+                <div class="result__text">
+                    <p>　弊社へのお仕事のご依頼・お見積もり・採用に関するお問い合わせは、下記フォームよりお気軽にご連絡ください。内容を確認のうえ、担当者より折り返しご連絡いたします。
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="contact">
+            <h3 class="confirm__title" id="confirmTitle" style="display:none;">
+                入力内容のご確認
+            </h3>
+            <div class="contact__inner">
+                <form id="contactForm" action="https://formspree.io/f/xanrbwvk" method="POST">
+                    <input type="hidden" name="redirect" value="/thanks.html">
+                    <article class="content">
+                        <div class="content__item item">
+                            <label class="item__title">お問い合わせ内容</label>
+                            <span class="item__required">必須</span>
+                        </div>
+                        <ul class="content__options">
+                            <li>
+                                <label>
+                                    <input class="content__check" type="radio" name="content-type" value="consult"
+                                        required>
+                                    ご相談・ご質問
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input class="content__check" type="radio" name="content-type" value="job">
+                                    お仕事のご依頼
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input class="content__check" type="radio" name="content-type" value="estimate">
+                                    お見積り
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input class="content__check" type="radio" name="content-type" value="other">
+                                    その他
+                                </label>
+                            </li>
+                        </ul>
+                    </article>
+                    <article class="name">
+                        <div class="form__item item">
+                            <label for="name" class="item__title">お名前</label>
+                            <span class="item__required">必須</span>
+                        </div>
+                        <input id="name" name="name" type="text" placeholder="お名前" required>
+                    </article>
+                    <article class="company-name">
+                        <div class="form__item item">
+                            <label for="company-name" class="item__title">会社名</label>
+                        </div>
+                        <input id="company-name" name="company-name" type="text" placeholder="会社名">
+                    </article>
+                    <article class="tellphone">
+                        <div class="form__item item">
+                            <label for="email" class="item__title">メールアドレス</label>
+                            <span class="item__required">必須</span>
+                        </div>
+                        <input id="email" name="email" type="email" placeholder="メールアドレス" required>
+                    </article>
+
+                    <article class="phone">
+                        <div class="form__item item">
+                            <label for="tel" class="item__title">電話番号</label>
+                        </div>
+                        <input id="tel" name="tel" type="tel" placeholder="電話番号">
+                    </article>
+                    <article class="address">
+                        <div class="form__item item">
+                            <label for="address" class="item__title">ご住所</label>
+                        </div>
+                        <input id="address" name="address" type="text" placeholder="ご住所">
+                    </article>
+                    <article class="contact-main-text form__row">
+                        <div class="form__item item">
+                            <label for="message" class="item__title">お問い合わせ本文</label>
+                            <span class="item__required">必須</span>
+                        </div>
+                        <textarea id="message" name="message" placeholder="お問い合わせ本文" required></textarea>
+                    </article>
+                    <button type="button" class="contact__btn" id="confirmBtn">
+                        確認
+                    </button>
+
+                    <section class="confirm" id="confirmArea" style="display:none;">
+                        <p class="confirm__lead" id="confirmLead" style="display:none;">
+                            以下の内容でよろしければ「送信」を押してください。
+                        </p>
+                        <article class="content">
+                            <div class="content__item item">
+                                <span class="item__title">お問い合わせ内容</span>
+                            </div>
+                            <p class="confirm__text" id="confirm-content"></p>
+                        </article>
+
+                        <article class="name">
+                            <div class="form__item item">
+                                <span class="item__title">お名前</span>
+                            </div>
+                            <p class="confirm__text" id="confirm-name"></p>
+                        </article>
+
+                        <article class="company-name">
+                            <div class="form__item item">
+                                <span class="item__title">会社名</span>
+                            </div>
+                            <p class="confirm__text" id="confirm-company"></p>
+                        </article>
+
+                        <article class="tellphone">
+                            <div class="form__item item">
+                                <span class="item__title">メールアドレス</span>
+                            </div>
+                            <p class="confirm__text" id="confirm-email"></p>
+                        </article>
+
+                        <article class="phone">
+                            <div class="form__item item">
+                                <span class="item__title">電話番号</span>
+                            </div>
+                            <p class="confirm__text" id="confirm-tel"></p>
+                        </article>
+
+                        <article class="address">
+                            <div class="form__item item">
+                                <span class="item__title">ご住所</span>
+                            </div>
+                            <p class="confirm__text" id="confirm-address"></p>
+                        </article>
+
+                        <article class="contact-main-text form__row">
+                            <div class="form__item item">
+                                <span class="item__title">お問い合わせ本文</span>
+                            </div>
+                            <p class="confirm__text" id="confirm-message"></p>
+                        </article>
+
+                        <div class="confirm__buttons">
+                            <button type="button" class="contact__btn" id="backBtn">戻る</button>
+                            <button type="submit" class="contact__btn">送信</button>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="footer__grid">
+                <img class="footer__logo" src="image/footer_logo.svg" alt="日昇工業所ロゴ">
+                <ul class="footer__list info">
+                    <li class="info__address">
+                        <span class="label">住所：</span>
+                        三重県伊勢市村松町1380-14
+                    </li>
+                    <li class="info__tel">
+                        <span class="label">TEL：</span>
+                        0596-37-5306
+                    </li>
+                    <li class="info__email">
+                        <span class="label">メール：</span>
+                        nissho-kogyosho@sky.plala.or.jp
+                    </li>
+                </ul>
+            </div>
+            <a class="footer__button" href="contact.html">お問い合わせ</a>
+            <small class="footer__copy">&copy; 2025 nissho. All Rights Reserved.</small>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
