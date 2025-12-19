@@ -793,7 +793,7 @@ input:focus::placeholder {
   }
 }
 .news-card__inner {
-  max-height: 9.375rem;
+  max-height: 7.5rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
