@@ -19,7 +19,6 @@ fetch("api/news.php")
             return `
                 <li class="news-item">
                     <span class="news-item__date">${date}</span>
-                    <p class="news-item__title">${item.title}</p>
                     <p class="news-item__text">${content}</p>
                 </li>
             `;

@@ -1003,7 +1003,6 @@ input {
     padding: rem(16) rem(24);
     display: flex;
     flex-direction: column;
-    gap: rem(6);
 
     &+& {
         border-top: 1px solid rgba(0, 0, 0, 0.15);
@@ -1015,12 +1014,6 @@ input {
         white-space: nowrap;
     }
 
-    &__title {
-        font-size: rem(16);
-        font-weight: 550;
-        line-height: 1.5;
-    }
-
     &__text {
         font-size: rem(16);
         line-height: 1.6;
@@ -1030,19 +1023,14 @@ input {
         flex-direction: row;
         /* PCでは横並び */
         align-items: center;
-        gap: rem(16);
 
         &__date {
             width: rem(80);
             flex-shrink: 0;
         }
 
-        &__title {
-            flex: 1;
-        }
-
         &__text {
-            flex: 2;
+            flex: 1;
         }
     }
 }
