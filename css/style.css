@@ -1,9 +1,10 @@
 @charset "UTF-8";
 /* ----------------------------- ここまで ---------------------------- */
 body {
+  font-family: "Shippori Mincho", serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: 1rem;
-  font-weight: normal;
-  font-family: "ShipporiMincho", "S", "Times New Roman", Times, "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
   line-height: 1.4375;
   color: #000;
 }
@@ -31,99 +32,6 @@ img {
   }
 }
 
-/* ---------------------- ローディング画面 ------------------------------ */
-#loading-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #6AB5CE;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.loading-inner {
-  text-align: center;
-}
-
-.loading-logo {
-  width: 12.5rem;
-  margin-bottom: 1.875rem;
-}
-@media (width >= 391px) {
-  .loading-logo {
-    width: 15.625rem;
-    margin-bottom: 2.5rem;
-  }
-}
-@media (width >= 877px) {
-  .loading-logo {
-    width: 18.75rem;
-    margin-bottom: 3.125rem;
-  }
-}
-
-.loading-text {
-  font-size: 1.125rem;
-  color: #fff;
-}
-@media (width >= 391px) {
-  .loading-text {
-    font-size: 1.375rem;
-  }
-}
-@media (width >= 877px) {
-  .loading-text {
-    font-size: 1.5rem;
-  }
-}
-.loading-text .dot {
-  opacity: 0;
-  -webkit-animation: blink 1.5s infinite;
-          animation: blink 1.5s infinite;
-}
-.loading-text .dot:nth-child(1) {
-  -webkit-animation-delay: 0s;
-          animation-delay: 0s;
-}
-.loading-text .dot:nth-child(2) {
-  -webkit-animation-delay: 0.2s;
-          animation-delay: 0.2s;
-}
-.loading-text .dot:nth-child(3) {
-  -webkit-animation-delay: 0.4s;
-          animation-delay: 0.4s;
-}
-
-@-webkit-keyframes blink {
-  0%, 50% {
-    opacity: 0;
-  }
-  70%, 100% {
-    opacity: 1;
-  }
-}
-
-@keyframes blink {
-  0%, 50% {
-    opacity: 0;
-  }
-  70%, 100% {
-    opacity: 1;
-  }
-}
-@keyframes blink {
-  0%, 20% {
-    opacity: 0;
-  }
-  50%, 100% {
-    opacity: 1;
-  }
-}
-/* ------------------------------- ここまで --------------------------- */
 /* ------------------------------ ボタン -------------------------------*/
 .btn {
   position: relative;
@@ -144,9 +52,11 @@ img {
   z-index: 1;
 }
 .btn__link span {
-  font-weight: 550;
   display: inline-block;
   transform: translateX(-2.1875rem);
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  font-style: normal;
 }
 .btn__link::before {
   content: "";
@@ -197,7 +107,7 @@ img {
 /* -------------------------- ここまで ----------------------------------- */
 /* --------------------- トップ以外のメインヴィジュアル ---------------------- */
 .hero {
-  background: url(../image/company-sp.jpg) no-repeat center/cover;
+  background: url(../image/company-sp.webp) no-repeat center/cover;
   height: 18.125rem;
   position: relative;
   overflow: hidden;
@@ -232,7 +142,7 @@ img {
 }
 @media (width >= 391px) {
   .hero {
-    background: url(../image/company-ta.jpg) no-repeat center/cover;
+    background: url(../image/company-ta.webp) no-repeat center/cover;
     height: 25rem;
   }
   .hero__overlay {
@@ -248,7 +158,7 @@ img {
 }
 @media (width >= 877px) {
   .hero {
-    background: url(../image/company-img.jpg) no-repeat center/cover;
+    background: url(../image/company-img.webp) no-repeat center/cover;
     height: 27.8125rem;
     margin-bottom: 6.25rem;
   }
@@ -281,8 +191,10 @@ img {
 /* -------------------------- ここまで ----------------------------------*/
 .card__title {
   font-size: 1.25rem;
-  font-weight: 550;
   margin-bottom: 0.625rem;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  font-style: normal;
 }
 .card__pic {
   margin-bottom: 0.625rem;
@@ -415,7 +327,9 @@ input:focus::placeholder {
   display: none;
   align-items: center;
   color: #fff;
-  font-weight: 550;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  font-style: normal;
 }
 @media (width >= 877px) {
   .gnav__list {
@@ -645,7 +559,9 @@ input:focus::placeholder {
   padding-bottom: 3.125rem;
 }
 .footer__list .label {
-  font-weight: bold;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  font-style: normal;
 }
 .footer__button {
   display: block;
@@ -654,7 +570,7 @@ input:focus::placeholder {
   height: 2.5rem;
   padding: 0.625rem 2.8125rem;
   color: #fff;
-  background-color: #E76F51;
+  background-color: #1EC900;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 3.125rem;
@@ -668,8 +584,8 @@ input:focus::placeholder {
   }
 }
 .footer__button:hover {
-  background-color: #D65A3A;
-  transition: 0.3s;
+  background-color: #179E00;
+  transition: 0.5s;
 }
 .footer__copy {
   display: block;
@@ -708,15 +624,17 @@ input:focus::placeholder {
 /* --------------------------- mainvisual ------------------------------ */
 .mainvisual {
   position: relative;
-  background: url(../image/exterior-sp.jpg) no-repeat center/cover;
+  background: url(../image/exterior-sp.webp) no-repeat center/cover;
   padding: 17.5rem 0 18.75rem;
   margin-bottom: 3.125rem;
   color: #fff;
-  font-weight: 550;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  font-style: normal;
 }
 @media (width >= 391px) {
   .mainvisual {
-    background: url(../image/exterior.jpg) no-repeat center/cover;
+    background: url(../image/exterior.webp) no-repeat center/cover;
     padding: 17.5rem 0 18.75rem;
     margin-bottom: 6.25rem;
   }
@@ -874,7 +792,6 @@ input:focus::placeholder {
   position: relative;
   margin-bottom: 3.125rem;
   font-size: 1.25rem;
-  font-weight: 550;
   text-shadow: 0.1875rem 0.1875rem 0.25rem rgba(0, 0, 0, 0.25);
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -882,8 +799,10 @@ input:focus::placeholder {
   -moz-column-gap: 1.25rem;
        column-gap: 1.25rem;
   font-size: 1.25rem;
-  font-weight: 600;
   text-align: center;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  font-style: normal;
 }
 .result__title::before, .result__title::after {
   content: "";
@@ -969,10 +888,12 @@ input:focus::placeholder {
   margin-bottom: 3.125rem;
   padding: 0.625rem 0;
   font-size: 1.25rem;
-  font-weight: 550;
   text-align: center;
   background-color: #CFEBF4;
   position: relative;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  font-style: normal;
 }
 @media (width >= 391px) {
   .service__title {
@@ -1053,16 +974,18 @@ input:focus::placeholder {
 
 /* --------------------------- projects -------------------------------- */
 .projects {
-  background: url(../image/back-img.jpg) no-repeat center/cover;
+  background: url(../image/back-img.webp) no-repeat center/cover;
 }
 .projects__title {
   margin-bottom: 3.125rem;
   padding: 0.625rem 0;
   font-size: 1.25rem;
-  font-weight: 550;
   text-align: center;
   background-color: #CFEBF4;
   position: relative;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  font-style: normal;
 }
 @media (width >= 391px) {
   .projects__title {
@@ -1168,10 +1091,12 @@ input:focus::placeholder {
   margin-bottom: 3.125rem;
   padding: 0.625rem 0;
   font-size: 1.25rem;
-  font-weight: 550;
   text-align: center;
   background-color: #CFEBF4;
   position: relative;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  font-style: normal;
 }
 @media (width >= 391px) {
   .clients__title {
@@ -1276,10 +1201,12 @@ input:focus::placeholder {
   margin-bottom: 3.125rem;
   padding: 0.625rem 0;
   font-size: 1.25rem;
-  font-weight: 550;
   text-align: center;
   background-color: #CFEBF4;
   position: relative;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  font-style: normal;
 }
 @media (width >= 391px) {
   .access__title {
@@ -1345,7 +1272,9 @@ input:focus::placeholder {
   row-gap: 1.25rem;
 }
 .access__list span {
+  font-family: "Shippori Mincho", serif;
   font-weight: 600;
+  font-style: normal;
 }
 .access__map {
   position: relative;
@@ -1363,7 +1292,7 @@ input:focus::placeholder {
 
 /* ----------------------------- ここまで -------------------------------- */
 .service-hero {
-  background: url(../image/company-sp.jpg) no-repeat center/cover;
+  background: url(../image/company-sp.webp) no-repeat center/cover;
   height: 18.125rem;
   position: relative;
   overflow: hidden;
@@ -1398,7 +1327,7 @@ input:focus::placeholder {
 }
 @media (width >= 391px) {
   .service-hero {
-    background: url(../image/company-ta.jpg) no-repeat center/cover;
+    background: url(../image/company-ta.webp) no-repeat center/cover;
     height: 25rem;
   }
   .service-hero__overlay {
@@ -1414,7 +1343,7 @@ input:focus::placeholder {
 }
 @media (width >= 877px) {
   .service-hero {
-    background: url(../image/company-img.jpg) no-repeat center/cover;
+    background: url(../image/company-img.webp) no-repeat center/cover;
     height: 27.8125rem;
     margin-bottom: 6.25rem;
   }
@@ -1444,10 +1373,12 @@ input:focus::placeholder {
   margin-bottom: 3.125rem;
   padding: 0.625rem 0;
   font-size: 1.25rem;
-  font-weight: 550;
   text-align: center;
   background-color: #CFEBF4;
   position: relative;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  font-style: normal;
 }
 @media (width >= 391px) {
   .service-processing__title {
@@ -1549,10 +1480,12 @@ input:focus::placeholder {
   margin-bottom: 3.125rem;
   padding: 0.625rem 0;
   font-size: 1.25rem;
-  font-weight: 550;
   text-align: center;
   background-color: #CFEBF4;
   position: relative;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  font-style: normal;
 }
 @media (width >= 391px) {
   .service--attachment__title {
@@ -1642,7 +1575,7 @@ input:focus::placeholder {
 
 /* ---------------------------- ここまで --------------------------------- */
 .project-hero {
-  background: url(../image/company-sp.jpg) no-repeat center/cover;
+  background: url(../image/company-sp.webp) no-repeat center/cover;
   height: 18.125rem;
   position: relative;
   overflow: hidden;
@@ -1677,7 +1610,7 @@ input:focus::placeholder {
 }
 @media (width >= 391px) {
   .project-hero {
-    background: url(../image/company-ta.jpg) no-repeat center/cover;
+    background: url(../image/company-ta.webp) no-repeat center/cover;
     height: 25rem;
   }
   .project-hero__overlay {
@@ -1693,7 +1626,7 @@ input:focus::placeholder {
 }
 @media (width >= 877px) {
   .project-hero {
-    background: url(../image/company-img.jpg) no-repeat center/cover;
+    background: url(../image/company-img.webp) no-repeat center/cover;
     height: 27.8125rem;
     margin-bottom: 6.25rem;
   }
@@ -1715,10 +1648,12 @@ input:focus::placeholder {
   margin-bottom: 3.125rem;
   padding: 0.625rem 0;
   font-size: 1.25rem;
-  font-weight: 550;
   text-align: center;
   background-color: #CFEBF4;
   position: relative;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  font-style: normal;
 }
 @media (width >= 391px) {
   .history__title {
@@ -1799,10 +1734,12 @@ input:focus::placeholder {
   margin-bottom: 3.125rem;
   padding: 0.625rem 0;
   font-size: 1.25rem;
-  font-weight: 550;
   text-align: center;
   background-color: #CFEBF4;
   position: relative;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  font-style: normal;
 }
 @media (width >= 391px) {
   .project__title {
@@ -1900,7 +1837,7 @@ input:focus::placeholder {
 
 /* -------------------------- ここまで ----------------------------------- */
 .client-hero {
-  background: url(../image/company-sp.jpg) no-repeat center/cover;
+  background: url(../image/company-sp.webp) no-repeat center/cover;
   height: 18.125rem;
   position: relative;
   overflow: hidden;
@@ -1935,7 +1872,7 @@ input:focus::placeholder {
 }
 @media (width >= 391px) {
   .client-hero {
-    background: url(../image/company-ta.jpg) no-repeat center/cover;
+    background: url(../image/company-ta.webp) no-repeat center/cover;
     height: 25rem;
   }
   .client-hero__overlay {
@@ -1951,7 +1888,7 @@ input:focus::placeholder {
 }
 @media (width >= 877px) {
   .client-hero {
-    background: url(../image/company-img.jpg) no-repeat center/cover;
+    background: url(../image/company-img.webp) no-repeat center/cover;
     height: 27.8125rem;
     margin-bottom: 6.25rem;
   }
@@ -1981,10 +1918,12 @@ input:focus::placeholder {
   margin-bottom: 3.125rem;
   padding: 0.625rem 0;
   font-size: 1.25rem;
-  font-weight: 550;
   text-align: center;
   background-color: #CFEBF4;
   position: relative;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  font-style: normal;
 }
 @media (width >= 391px) {
   .client__title {
@@ -2074,7 +2013,7 @@ input:focus::placeholder {
 
 /* ------------------------------- ここまで ----------------------------- */
 .contact-hero {
-  background: url(../image/company-sp.jpg) no-repeat center/cover;
+  background: url(../image/company-sp.webp) no-repeat center/cover;
   height: 18.125rem;
   position: relative;
   overflow: hidden;
@@ -2109,7 +2048,7 @@ input:focus::placeholder {
 }
 @media (width >= 391px) {
   .contact-hero {
-    background: url(../image/company-ta.jpg) no-repeat center/cover;
+    background: url(../image/company-ta.webp) no-repeat center/cover;
     height: 25rem;
   }
   .contact-hero__overlay {
@@ -2125,7 +2064,7 @@ input:focus::placeholder {
 }
 @media (width >= 877px) {
   .contact-hero {
-    background: url(../image/company-img.jpg) no-repeat center/cover;
+    background: url(../image/company-img.webp) no-repeat center/cover;
     height: 27.8125rem;
     margin-bottom: 6.25rem;
   }
@@ -2156,8 +2095,10 @@ input:focus::placeholder {
   display: inline-block;
   margin-bottom: 1.25rem;
   padding: 0 0.625rem 0 0;
-  font-weight: 550;
   font-size: 1.125rem;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  font-style: normal;
 }
 @media (width >= 877px) {
   .item__title {
@@ -2381,10 +2322,12 @@ input:focus::placeholder {
   margin-bottom: 3.125rem;
   padding: 0.625rem 0;
   font-size: 1.25rem;
-  font-weight: 550;
   text-align: center;
   background-color: #CFEBF4;
   position: relative;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  font-style: normal;
 }
 @media (width >= 391px) {
   .confirm__title {
@@ -2455,7 +2398,9 @@ input:focus::placeholder {
   font-size: 1.25rem;
   margin-bottom: 1.875rem;
   text-align: center;
-  font-weight: 550;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 600;
+  font-style: normal;
 }
 .wrapper__text {
   text-align: center;
@@ -2514,9 +2459,11 @@ input:focus::placeholder {
 }
 .error-404__title {
   font-size: 1.125rem;
-  font-weight: 550;
   text-align: center;
   margin-bottom: 1.875rem;
+  font-family: "Shippori Mincho", serif;
+  font-weight: 700;
+  font-style: normal;
 }
 .error-404__text {
   text-align: center;

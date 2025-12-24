@@ -23,14 +23,27 @@ $color-hover: #ffdd44;
 
 // --- Typography ---
 $font-size-base: 16;
-$font-family-mincho-bold: "ShipporiMincho-Semi-Bold", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
-$font-family-mincho: "ShipporiMincho", "S", "Times New Roman", Times, "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
+
+$font-family-mincho: "Shippori Mincho", serif;
+$font-family-mincho-thick: "Shippori Mincho", serif;
 
 // --- Breakpoints ---
 $breakpoints: (
     "tablet": 391px,
     "desktop": 877px
 );
+
+@mixin font-mincho($weight: 400) {
+    font-family: $font-family-mincho;
+    font-weight: $weight;
+    font-style: normal;
+}
+
+@mixin font-thick($weight: 700) {
+    font-family: $font-family-mincho-thick;
+    font-weight: $weight;
+    font-style: normal;
+}
 
 
 // =================================================================
@@ -86,15 +99,15 @@ $breakpoints: (
     position: relative;
     margin-bottom: rem(50);
     font-size: rem(20);
-    font-weight: 550;
     text-shadow: rem(3) rem(3) rem(4) rgba(0, 0, 0, 0.25);
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     column-gap: rem(20);
     font-size: rem(20);
-    font-weight: 600;
     text-align: center;
+
+    @include font-thick(600);
 
     &::before,
     &::after {
@@ -114,10 +127,11 @@ $breakpoints: (
     margin-bottom: rem(50);
     padding: rem(10) 0;
     font-size: rem(20);
-    font-weight: 550;
     text-align: center;
     background-color: $color-main;
     position: relative;
+
+    @include font-thick(600);
 
     @include mq(tablet) {
         font-size: $space-l;
@@ -166,7 +180,7 @@ $breakpoints: (
 }
 
 @mixin hero() {
-    background: url(../image/company-sp.jpg) no-repeat center/cover;
+    background: url(../image/company-sp.webp) no-repeat center/cover;
     height: rem(290);
     position: relative;
     overflow: hidden;
@@ -203,7 +217,7 @@ $breakpoints: (
     }
 
     @include mq(tablet) {
-        background: url(../image/company-ta.jpg) no-repeat center/cover;
+        background: url(../image/company-ta.webp) no-repeat center/cover;
         height: rem(400);
 
         &__overlay {
@@ -221,7 +235,7 @@ $breakpoints: (
     }
 
     @include mq(desktop) {
-        background: url(../image/company-img.jpg) no-repeat center/cover;
+        background: url(../image/company-img.webp) no-repeat center/cover;
         height: rem(445);
         margin-bottom: rem(100);
 
@@ -246,8 +260,9 @@ $breakpoints: (
         display: inline-block;
         margin-bottom: rem(20);
         padding: 0 rem(10) 0 0;
-        font-weight: 550;
         font-size: rem(18);
+
+        @include font-thick(600);
 
         @include mq(desktop) {
             margin-bottom: 0;
@@ -280,9 +295,9 @@ $breakpoints: (
 // common
 // =========================================================================
 body {
+    @include font-mincho(400);
+
     font-size: rem($font-size-base);
-    font-weight: normal;
-    font-family: $font-family-mincho;
     line-height: math.div(23, 16);
     color: $color-text;
 
@@ -300,102 +315,6 @@ img {
 .sub--title {
     @include sub-title();
 }
-
-/* ---------------------- ローディング画面 ------------------------------ */
-#loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: $color-main2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-
-// 内側（ロゴ＋テキスト縦並び）
-.loading-inner {
-    text-align: center;
-}
-
-// ロゴ
-.loading-logo {
-    width: rem(200);
-    margin-bottom: rem(30);
-
-    @include mq(tablet) {
-        width: rem(250);
-        margin-bottom: rem(40);
-    }
-
-    @include mq(desktop) {
-        width: rem(300);
-        margin-bottom: rem(50);
-    }
-}
-
-// テキスト
-.loading-text {
-    font-size: rem(18);
-    color: #fff;
-
-    @include mq(tablet) {
-        font-size: rem(22);
-    }
-
-    @include mq(desktop) {
-        font-size: $space-l;
-    }
-
-    // 点（...）アニメーション
-    .dot {
-        opacity: 0;
-        animation: blink 1.5s infinite;
-
-        &:nth-child(1) {
-            animation-delay: 0s;
-        }
-
-        &:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        &:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-    }
-}
-
-// アニメーション
-@keyframes blink {
-
-    0%,
-    50% {
-        opacity: 0;
-    }
-
-    70%,
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes blink {
-
-    0%,
-    20% {
-        opacity: 0;
-    }
-
-    50%,
-    100% {
-        opacity: 1;
-    }
-}
-
-/* ------------------------------- ここまで --------------------------- */
 
 /* ------------------------------ ボタン -------------------------------*/
 .btn {
@@ -416,9 +335,10 @@ img {
     }
 
     &__link span {
-        font-weight: 550;
         display: inline-block;
         transform: translateX(rem(-35));
+
+        @include font-thick(600);
     }
 
     &__link::before {
@@ -498,8 +418,9 @@ img {
 .card {
     &__title {
         font-size: rem(20);
-        font-weight: 550;
         margin-bottom: rem(10);
+
+        @include font-thick(600);
     }
 
     &__pic {
@@ -597,7 +518,7 @@ input {
         display: none; // 初期は非表示（モバイルではハンバーガーを使う）
         align-items: center;
         color: $color-base;
-        font-weight: 550;
+        @include font-thick(600);
 
         @include mq(desktop) {
             display: flex; // デスクトップで文字メニュー表示
@@ -833,7 +754,7 @@ input {
         padding-bottom: rem(50);
 
         .label {
-            font-weight: bold;
+            @include font-thick(600);
         }
     }
 
@@ -844,7 +765,7 @@ input {
         height: rem(40);
         padding: rem(10) rem(45);
         color: $color-base;
-        background-color: #E76F51;
+        background-color: #1EC900;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: rem(50);
@@ -858,8 +779,8 @@ input {
     }
 
     &__button:hover {
-        background-color: #D65A3A;
-        transition: 0.3s;
+        background-color: #179E00;
+        transition: 0.5s;
     }
 
     &__copy {
@@ -909,14 +830,14 @@ input {
 /* --------------------------- mainvisual ------------------------------ */
 .mainvisual {
     position: relative;
-    background: url(../image/exterior-sp.jpg) no-repeat center /cover;
+    background: url(../image/exterior-sp.webp) no-repeat center /cover;
     padding: rem(280) 0 rem(300);
     margin-bottom: rem(50);
     color: $color-base;
-    font-weight: 550; //Semi-Boldの代用
+    @include font-thick(600);
 
     @include mq(tablet) {
-        background: url(../image/exterior.jpg) no-repeat center /cover;
+        background: url(../image/exterior.webp) no-repeat center /cover;
         padding: rem(280) 0 rem(300);
         margin-bottom: rem(100);
     }
@@ -1160,7 +1081,7 @@ input {
 
 /* --------------------------- projects -------------------------------- */
 .projects {
-    background: url(../image/back-img.jpg) no-repeat center /cover;
+    background: url(../image/back-img.webp) no-repeat center /cover;
 
     &__title {
         @include main-title();
@@ -1298,7 +1219,7 @@ input {
         row-gap: rem(20);
 
         span {
-            font-weight: 600;
+            @include font-thick(600);
         }
     }
 
@@ -1828,7 +1749,7 @@ input {
         font-size: rem(20);
         margin-bottom: rem(30);
         text-align: center;
-        font-weight: 550;
+        @include font-thick(600);
     }
 
     &__text {
@@ -1883,9 +1804,10 @@ input {
 
     &__title {
         font-size: rem(18);
-        font-weight: 550;
         text-align: center;
         margin-bottom: rem(30);
+
+        @include font-thick(700);
     }
 
     &__text {
