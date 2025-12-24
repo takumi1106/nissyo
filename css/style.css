@@ -570,7 +570,7 @@ input:focus::placeholder {
   height: 2.5rem;
   padding: 0.625rem 2.8125rem;
   color: #fff;
-  background-color: #1EC900;
+  background-color: #20BD04;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 3.125rem;
@@ -580,11 +580,11 @@ input:focus::placeholder {
   .footer__button {
     width: 18.125rem;
     height: 3.75rem;
-    padding: 1.25rem 0.625rem;
+    padding: 1.125rem 0.625rem;
   }
 }
 .footer__button:hover {
-  background-color: #179E00;
+  background-color: #137E00;
   transition: 0.5s;
 }
 .footer__copy {

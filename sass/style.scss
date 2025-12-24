@@ -765,7 +765,7 @@ input {
         height: rem(40);
         padding: rem(10) rem(45);
         color: $color-base;
-        background-color: #1EC900;
+        background-color: #20BD04;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: rem(50);
@@ -774,12 +774,12 @@ input {
         @include mq(desktop) {
             width: rem(290);
             height: rem(60);
-            padding: rem(20) rem(10);
+            padding: rem(18) rem(10);
         }
     }
 
     &__button:hover {
-        background-color: #179E00;
+        background-color: #137E00;
         transition: 0.5s;
     }
 
