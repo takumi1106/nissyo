@@ -2108,7 +2108,7 @@ input:focus::placeholder {
 .item__required {
   background-color: #FF0000;
   width: 3.125rem;
-  height: 1.4375rem;
+  height: 1.6875rem;
   color: #fff;
   padding: 0.125rem 0.3125rem;
   text-align: center;
