@@ -107,7 +107,7 @@ $breakpoints: (
     font-size: rem(20);
     text-align: center;
 
-    @include font-thick(600);
+    @include font-thick(700);
 
     &::before,
     &::after {
@@ -131,7 +131,7 @@ $breakpoints: (
     background-color: $color-main;
     position: relative;
 
-    @include font-thick(600);
+    @include font-thick();
 
     @include mq(tablet) {
         font-size: $space-l;
@@ -262,7 +262,7 @@ $breakpoints: (
         padding: 0 rem(10) 0 0;
         font-size: rem(18);
 
-        @include font-thick(600);
+        @include font-thick(700);
 
         @include mq(desktop) {
             margin-bottom: 0;
@@ -272,7 +272,7 @@ $breakpoints: (
     &__required {
         background-color: #FF0000;
         width: rem(50);
-        height: rem(27);
+        height: rem(28);
         color: $color-base;
         padding: rem(2) rem(5);
         text-align: center;
@@ -338,7 +338,7 @@ img {
         display: inline-block;
         transform: translateX(rem(-35));
 
-        @include font-thick(600);
+        @include font-thick(700);
     }
 
     &__link::before {
@@ -420,7 +420,7 @@ img {
         font-size: rem(20);
         margin-bottom: rem(10);
 
-        @include font-thick(600);
+        @include font-thick(700);
     }
 
     &__pic {
@@ -518,7 +518,7 @@ input {
         display: none; // 初期は非表示（モバイルではハンバーガーを使う）
         align-items: center;
         color: $color-base;
-        @include font-thick(600);
+        @include font-thick(700);
 
         @include mq(desktop) {
             display: flex; // デスクトップで文字メニュー表示
@@ -754,7 +754,7 @@ input {
         padding-bottom: rem(50);
 
         .label {
-            @include font-thick(600);
+            @include font-thick(700);
         }
     }
 
@@ -834,7 +834,7 @@ input {
     padding: rem(280) 0 rem(300);
     margin-bottom: rem(50);
     color: $color-base;
-    @include font-thick(600);
+    @include font-thick(700);
 
     @include mq(tablet) {
         background: url(../image/exterior.webp) no-repeat center /cover;
@@ -1219,7 +1219,7 @@ input {
         row-gap: rem(20);
 
         span {
-            @include font-thick(600);
+            @include font-thick(700);
         }
     }
 
@@ -1749,7 +1749,7 @@ input {
         font-size: rem(20);
         margin-bottom: rem(30);
         text-align: center;
-        @include font-thick(600);
+        @include font-thick(700);
     }
 
     &__text {
