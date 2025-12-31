@@ -1,10 +1,20 @@
+//======================ページトップへボタン========================//
+document.addEventListener('DOMContentLoaded', () => {
+    const pageTop = document.getElementById('pageTop');
+    if (!pageTop) return;
+
+    pageTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});
 //======================CMSのお知らせ========================//
 fetch("api/news.php")
     .then(res => res.json())
     .then(data => {
         if (!data.contents || data.contents.length === 0) return;
 
-        const list = document.getElementById("newsList");
+        const list = document.querySelector("#newsList");
+        if (!list) return;
 
         // 新しい順（最新が上）にソート
         const sorted = data.contents.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
@@ -28,7 +38,7 @@ fetch("api/news.php")
     })
     .catch(err => {
         console.error(err);
-        document.getElementById("newsList").innerHTML = "<li>ニュースを取得できませんでした</li>";
+        document.getElementById("newsList").innerHTML = "<li>お知らせは現在ありません</li>";
     });
 
 //========================== ヘッダー ============================//
@@ -64,9 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-//=================== ふわっと表示エフェクト ======================//
+//================= ふわっと表示エフェクト(fade-in) ======================//
 document.addEventListener('DOMContentLoaded', () => {
-    const fadeTargets = document.querySelectorAll('.fade-in');
+    const fadeTargets = document.querySelectorAll('.fade-in, .fade-main, .fade-sub');
 
     if (fadeTargets.length > 0) {
         const observer = new IntersectionObserver(entries => {
