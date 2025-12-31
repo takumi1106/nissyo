@@ -634,7 +634,7 @@ input:focus::placeholder {
   }
 }
 .footer__button:hover {
-  background-color: #137E00;
+  background-color: #27FF00;
   transition: 0.5s;
 }
 .footer__copy {
