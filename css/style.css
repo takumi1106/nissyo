@@ -576,8 +576,9 @@ input:focus::placeholder {
 /* ----------------------------- ここまで -------------------------------- */
 /* ----------------------------- footer --------------------------------- */
 .footer {
-  background-color: #6AB5CE;
+  background-color: #3c6da6;
   padding: 1.875rem 0;
+  color: #fff;
   /* キーボードでフォーカスした時だけ有効 */
 }
 .footer__inner {
@@ -617,14 +618,15 @@ input:focus::placeholder {
   display: block;
   text-align: center;
   width: 12.5rem;
-  height: 2.5rem;
+  height: 2.8125rem;
   padding: 0.625rem 2.8125rem;
   color: #fff;
-  background-color: #20BD04;
+  background-color: #2F7A3D;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 3.125rem;
   border: 1px solid #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 @media (width >= 877px) {
   .footer__button {
@@ -634,7 +636,7 @@ input:focus::placeholder {
   }
 }
 .footer__button:hover {
-  background-color: #137E00;
+  background-color: #25632c;
   transition: 0.5s;
 }
 .footer__copy {

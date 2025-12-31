@@ -792,8 +792,9 @@ input {
 
 /* ----------------------------- footer --------------------------------- */
 .footer {
-    background-color: $color-main2;
+    background-color: #3c6da6;
     padding: rem(30) 0;
+    color: $color-base;
 
     &__inner {
         @include inner();
@@ -821,14 +822,15 @@ input {
         display: block;
         text-align: center;
         width: rem(200);
-        height: rem(40);
+        height: rem(45);
         padding: rem(10) rem(45);
         color: $color-base;
-        background-color: #20BD04;
+        background-color: #2F7A3D;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: rem(50);
         border: 1px solid $color-base;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 
         @include mq(desktop) {
             width: rem(290);
@@ -838,7 +840,7 @@ input {
     }
 
     &__button:hover {
-        background-color: #137E00;
+        background-color: #25632c;
         transition: 0.5s;
     }
 
