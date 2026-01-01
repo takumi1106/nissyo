@@ -183,7 +183,7 @@ $breakpoints: (
 }
 
 @mixin hero() {
-    background: url(../image/company-sp.webp) no-repeat center/cover;
+    background: url(../images/company-sp.webp) no-repeat center/cover;
     height: rem(290);
     position: relative;
     overflow: hidden;
@@ -220,7 +220,7 @@ $breakpoints: (
     }
 
     @include mq(tablet) {
-        background: url(../image/company-ta.webp) no-repeat center/cover;
+        background: url(../images/company-ta.webp) no-repeat center/cover;
         height: rem(400);
 
         &__overlay {
@@ -238,7 +238,7 @@ $breakpoints: (
     }
 
     @include mq(desktop) {
-        background: url(../image/company-img.webp) no-repeat center/cover;
+        background: url(../images/company-img.webp) no-repeat center/cover;
         height: rem(445);
         margin-bottom: rem(100);
 
@@ -401,7 +401,7 @@ img {
 #pageTop {
     position: fixed;
     right: rem(5);
-    bottom: rem(5);
+    bottom: rem(15);
     width: rem(50);
     height: rem(50);
     border: 2px solid #000;
@@ -505,7 +505,7 @@ img {
 
     &__item {
         padding-left: rem(30);
-        background: url(../image/triangle.svg) no-repeat top left;
+        background: url(../images/triangle.svg) no-repeat top left;
         background-size: rem(17);
     }
 
@@ -701,7 +701,7 @@ input {
         align-items: center;
         justify-content: center;
         width: 100%;
-        height: 100%;
+        height: 100vh;
         background-color: $color-main2;
     }
 
@@ -825,7 +825,7 @@ input {
         height: rem(45);
         padding: rem(10) rem(45);
         color: $color-base;
-        background-color: #2F7A3D;
+        background-color: #1BAC00;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: rem(50);
@@ -840,7 +840,7 @@ input {
     }
 
     &__button:hover {
-        background-color: #25632c;
+        background-color: #2F7A3D;
         transition: 0.5s;
     }
 
@@ -891,14 +891,14 @@ input {
 /* --------------------------- mainvisual ------------------------------ */
 .mainvisual {
     position: relative;
-    background: url(../image/exterior-sp.webp) no-repeat center /cover;
+    background: url(../images/exterior-sp.webp) no-repeat center /cover;
     padding: rem(280) 0 rem(300);
     margin-bottom: rem(50);
     color: $color-base;
     @include font-thick(700);
 
     @include mq(tablet) {
-        background: url(../image/exterior.webp) no-repeat center /cover;
+        background: url(../images/exterior.webp) no-repeat center /cover;
         padding: rem(280) 0 rem(300);
         margin-bottom: rem(100);
     }
@@ -1142,7 +1142,7 @@ input {
 
 /* --------------------------- projects -------------------------------- */
 .projects {
-    background: url(../image/back-img.webp) no-repeat center /cover;
+    background: url(../images/back-img.webp) no-repeat center /cover;
 
     &__title {
         @include main-title();

@@ -109,7 +109,7 @@ img {
 #pageTop {
   position: fixed;
   right: 0.3125rem;
-  bottom: 0.3125rem;
+  bottom: 0.9375rem;
   width: 3.125rem;
   height: 3.125rem;
   border: 2px solid #000;
@@ -138,7 +138,7 @@ img {
 /* -------------------------- ここまで ----------------------------------- */
 /* --------------------- トップ以外のメインヴィジュアル ---------------------- */
 .hero {
-  background: url(../image/company-sp.webp) no-repeat center/cover;
+  background: url(../images/company-sp.webp) no-repeat center/cover;
   height: 18.125rem;
   position: relative;
   overflow: hidden;
@@ -173,7 +173,7 @@ img {
 }
 @media (width >= 391px) {
   .hero {
-    background: url(../image/company-ta.webp) no-repeat center/cover;
+    background: url(../images/company-ta.webp) no-repeat center/cover;
     height: 25rem;
   }
   .hero__overlay {
@@ -189,7 +189,7 @@ img {
 }
 @media (width >= 877px) {
   .hero {
-    background: url(../image/company-img.webp) no-repeat center/cover;
+    background: url(../images/company-img.webp) no-repeat center/cover;
     height: 27.8125rem;
     margin-bottom: 6.25rem;
   }
@@ -268,7 +268,7 @@ img {
 }
 .list__item {
   padding-left: 1.875rem;
-  background: url(../image/triangle.svg) no-repeat top left;
+  background: url(../images/triangle.svg) no-repeat top left;
   background-size: 1.0625rem;
 }
 .list__spacer {
@@ -495,7 +495,7 @@ input:focus::placeholder {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: #6AB5CE;
 }
 .nav-morph__list {
@@ -621,7 +621,7 @@ input:focus::placeholder {
   height: 2.8125rem;
   padding: 0.625rem 2.8125rem;
   color: #fff;
-  background-color: #2F7A3D;
+  background-color: #1BAC00;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 3.125rem;
@@ -636,7 +636,7 @@ input:focus::placeholder {
   }
 }
 .footer__button:hover {
-  background-color: #25632c;
+  background-color: #2F7A3D;
   transition: 0.5s;
 }
 .footer__copy {
@@ -676,7 +676,7 @@ input:focus::placeholder {
 /* --------------------------- mainvisual ------------------------------ */
 .mainvisual {
   position: relative;
-  background: url(../image/exterior-sp.webp) no-repeat center/cover;
+  background: url(../images/exterior-sp.webp) no-repeat center/cover;
   padding: 17.5rem 0 18.75rem;
   margin-bottom: 3.125rem;
   color: #fff;
@@ -686,7 +686,7 @@ input:focus::placeholder {
 }
 @media (width >= 391px) {
   .mainvisual {
-    background: url(../image/exterior.webp) no-repeat center/cover;
+    background: url(../images/exterior.webp) no-repeat center/cover;
     padding: 17.5rem 0 18.75rem;
     margin-bottom: 6.25rem;
   }
@@ -1030,7 +1030,7 @@ input:focus::placeholder {
 
 /* --------------------------- projects -------------------------------- */
 .projects {
-  background: url(../image/back-img.webp) no-repeat center/cover;
+  background: url(../images/back-img.webp) no-repeat center/cover;
 }
 .projects__title {
   margin-bottom: 3.125rem;
@@ -1348,7 +1348,7 @@ input:focus::placeholder {
 
 /* ----------------------------- ここまで -------------------------------- */
 .service-hero {
-  background: url(../image/company-sp.webp) no-repeat center/cover;
+  background: url(../images/company-sp.webp) no-repeat center/cover;
   height: 18.125rem;
   position: relative;
   overflow: hidden;
@@ -1383,7 +1383,7 @@ input:focus::placeholder {
 }
 @media (width >= 391px) {
   .service-hero {
-    background: url(../image/company-ta.webp) no-repeat center/cover;
+    background: url(../images/company-ta.webp) no-repeat center/cover;
     height: 25rem;
   }
   .service-hero__overlay {
@@ -1399,7 +1399,7 @@ input:focus::placeholder {
 }
 @media (width >= 877px) {
   .service-hero {
-    background: url(../image/company-img.webp) no-repeat center/cover;
+    background: url(../images/company-img.webp) no-repeat center/cover;
     height: 27.8125rem;
     margin-bottom: 6.25rem;
   }
@@ -1631,7 +1631,7 @@ input:focus::placeholder {
 
 /* ---------------------------- ここまで --------------------------------- */
 .project-hero {
-  background: url(../image/company-sp.webp) no-repeat center/cover;
+  background: url(../images/company-sp.webp) no-repeat center/cover;
   height: 18.125rem;
   position: relative;
   overflow: hidden;
@@ -1666,7 +1666,7 @@ input:focus::placeholder {
 }
 @media (width >= 391px) {
   .project-hero {
-    background: url(../image/company-ta.webp) no-repeat center/cover;
+    background: url(../images/company-ta.webp) no-repeat center/cover;
     height: 25rem;
   }
   .project-hero__overlay {
@@ -1682,7 +1682,7 @@ input:focus::placeholder {
 }
 @media (width >= 877px) {
   .project-hero {
-    background: url(../image/company-img.webp) no-repeat center/cover;
+    background: url(../images/company-img.webp) no-repeat center/cover;
     height: 27.8125rem;
     margin-bottom: 6.25rem;
   }
@@ -1893,7 +1893,7 @@ input:focus::placeholder {
 
 /* -------------------------- ここまで ----------------------------------- */
 .client-hero {
-  background: url(../image/company-sp.webp) no-repeat center/cover;
+  background: url(../images/company-sp.webp) no-repeat center/cover;
   height: 18.125rem;
   position: relative;
   overflow: hidden;
@@ -1928,7 +1928,7 @@ input:focus::placeholder {
 }
 @media (width >= 391px) {
   .client-hero {
-    background: url(../image/company-ta.webp) no-repeat center/cover;
+    background: url(../images/company-ta.webp) no-repeat center/cover;
     height: 25rem;
   }
   .client-hero__overlay {
@@ -1944,7 +1944,7 @@ input:focus::placeholder {
 }
 @media (width >= 877px) {
   .client-hero {
-    background: url(../image/company-img.webp) no-repeat center/cover;
+    background: url(../images/company-img.webp) no-repeat center/cover;
     height: 27.8125rem;
     margin-bottom: 6.25rem;
   }
@@ -2069,7 +2069,7 @@ input:focus::placeholder {
 
 /* ------------------------------- ここまで ----------------------------- */
 .contact-hero {
-  background: url(../image/company-sp.webp) no-repeat center/cover;
+  background: url(../images/company-sp.webp) no-repeat center/cover;
   height: 18.125rem;
   position: relative;
   overflow: hidden;
@@ -2104,7 +2104,7 @@ input:focus::placeholder {
 }
 @media (width >= 391px) {
   .contact-hero {
-    background: url(../image/company-ta.webp) no-repeat center/cover;
+    background: url(../images/company-ta.webp) no-repeat center/cover;
     height: 25rem;
   }
   .contact-hero__overlay {
@@ -2120,7 +2120,7 @@ input:focus::placeholder {
 }
 @media (width >= 877px) {
   .contact-hero {
-    background: url(../image/company-img.webp) no-repeat center/cover;
+    background: url(../images/company-img.webp) no-repeat center/cover;
     height: 27.8125rem;
     margin-bottom: 6.25rem;
   }
