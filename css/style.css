@@ -559,6 +559,14 @@ input:focus::placeholder {
   display: block;
   transition: transform 0.3s ease;
 }
+.nav-morph__link .nav-morph__text__active {
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: #ffdd44;
+  pointer-events: none;
+}
 .nav-morph__link .nav-morph__hover {
   position: absolute;
   top: 100%;
