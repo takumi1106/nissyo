@@ -841,6 +841,8 @@ input {
         border: 1px solid $color-base;
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 
+        @include font-mincho(700);
+
         @include mq(desktop) {
             width: rem(290);
             height: rem(60);
@@ -886,8 +888,8 @@ input {
 
     /* キーボードでフォーカスした時だけ有効 */
     :focus-visible {
-        outline: 5px solid;
-        color: #264653;
+        outline: 2px solid;
+        color: #F4A261;
     }
 }
 

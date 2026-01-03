@@ -635,6 +635,9 @@ input:focus::placeholder {
   margin-bottom: 3.125rem;
   border: 1px solid #fff;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  font-family: "Shippori Mincho", serif;
+  font-weight: 700;
+  font-style: normal;
 }
 @media (width >= 877px) {
   .footer__button {
@@ -676,8 +679,8 @@ input:focus::placeholder {
   }
 }
 .footer :focus-visible {
-  outline: 5px solid;
-  color: #264653;
+  outline: 2px solid;
+  color: #F4A261;
 }
 
 /* ----------------------------- ここまで -------------------------------- */
