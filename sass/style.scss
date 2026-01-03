@@ -416,7 +416,7 @@ img {
     transition: background-color .3s, color .3s;
 
     &:hover {
-        background-color: #20BD04;
+        background-color: $color-main2;
         color: #fff;
     }
 
