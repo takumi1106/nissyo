@@ -5,7 +5,7 @@
 # 使用技術
 HTML/CSS(Sass)/JavaScript/microCMS
 
-#　使用ツール
+#　 使用ツール
 Visual Studio Code/Figma/Photoshop/illustrator/Formspree/ChatGPT
 
 # 制作目的
