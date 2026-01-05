@@ -105,14 +105,16 @@
                     <input type="hidden" name="redirect" value="/thanks.html">
                     <article class="content">
                         <div class="content__item item">
-                            <label class="item__title">お問い合わせ内容</label>
-                            <span class="item__required">必須</span>
+                            <label class="item__title">
+                                お問い合わせ内容 <span class="item__required">必須</span>
+                            </label>
                         </div>
+
                         <ul class="content__options">
                             <li>
                                 <label>
                                     <input class="content__check" type="radio" name="content-type" value="consult"
-                                        required>
+                                        required aria-required="true">
                                     ご相談・ご質問
                                 </label>
                             </li>
@@ -138,37 +140,48 @@
                     </article>
                     <article class="name">
                         <div class="form__item item">
-                            <label for="name" class="item__title">お名前</label>
-                            <span class="item__required">必須</span>
+                            <label for="name" class="item__title">
+                                お名前 <span class="item__required">必須</span>
+                            </label>
                         </div>
-                        <input id="name" name="name" type="text" placeholder="お名前" required>
+                        <input id="name" name="name" type="text" placeholder="お名前" required aria-required="true">
                     </article>
                     <article class="company-name">
                         <div class="form__item item">
-                            <label for="company-name" class="item__title">会社名</label>
+                            <label for="company-name" class="item__title">
+                                会社名
+                            </label>
                         </div>
                         <input id="company-name" name="company-name" type="text" placeholder="会社名">
                     </article>
+
                     <article class="tellphone">
                         <div class="form__item item">
-                            <label for="email" class="item__title">メールアドレス</label>
-                            <span class="item__required">必須</span>
+                            <label for="email" class="item__title">
+                                メールアドレス <span class="item__required">必須</span>
+                            </label>
                         </div>
-                        <input id="email" name="email" type="email" placeholder="メールアドレス" required>
+                        <input id="email" name="email" type="email" placeholder="メールアドレス" required aria-required="true">
                     </article>
 
                     <article class="phone">
                         <div class="form__item item">
-                            <label for="tel" class="item__title">電話番号</label>
+                            <label for="tel" class="item__title">
+                                電話番号
+                            </label>
                         </div>
                         <input id="tel" name="tel" type="tel" placeholder="電話番号">
                     </article>
+
                     <article class="address">
                         <div class="form__item item">
-                            <label for="address" class="item__title">ご住所</label>
+                            <label for="address" class="item__title">
+                                ご住所
+                            </label>
                         </div>
                         <input id="address" name="address" type="text" placeholder="ご住所">
                     </article>
+                    <!-- textarea項目は表示崩れ防止のため例外的な構造 -->
                     <article class="contact-main-text form__row">
                         <div class="form__item item">
                             <label for="message" class="item__title">お問い合わせ本文</label>
