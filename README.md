@@ -3,10 +3,16 @@
 進級制作では三重県伊勢市にある**日昇工業所**のサイトを制作しました。
 
 ## 使用技術
-HTML/CSS(Sass)/JavaScript/microCMS
+HTML　/　CSS(Sass)　/　JavaScript　/　microCMS
 
 ## 使用ツール
-Visual Studio Code/Figma/Photoshop/illustrator/Formspree/ChatGPT
+Visual Studio Code　/　Figma　/　Photoshop　/　Illustrator　/　Formspree　/　ChatGPT
+
+## デザイン
+### クライアントの要望
+- 下からふわっと出てきてほしいとのことだったのでfade-inを入れました。
+- 色は青と白を中心にして、できれば黄色も入れてほしいとのことでした。
+- 堅苦しくなくて、信頼感を絶対に出してほしいとのことでした。
 
 ## 制作目的
 配管工事を行う協力会社としての信頼感を伝えるため、コーポレートサイトを制作しました。
@@ -18,5 +24,5 @@ Visual Studio Code/Figma/Photoshop/illustrator/Formspree/ChatGPT
 - 表示速度や使用感の向上を目的に、PageSpeed Insights のスコアを意識して制作しました。
 
 ## microCMS
--管理者画面ではAPIスキーマを設計し、不要項目に記入できないようにしました。
--お知らせは最大3件のみ表示されるようにし、情報過多にならないようにしました。
+- 管理者画面ではAPIスキーマを設計し、不要項目に記入できないようにしました。
+- お知らせは最大3件のみ表示されるようにし、情報過多にならないようにしました。
