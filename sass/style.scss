@@ -858,8 +858,12 @@ input {
         &:hover,
         &:focus-visible {
             background-color: #2F7A3D;
-            outline: none;
             transition: 0.5s;
+        }
+
+        &:focus-visible {
+            outline: 2px solid #F4A261;
+            outline-offset: 4px;
         }
     }
 
