@@ -605,9 +605,11 @@ input:focus::placeholder {
   }
 }
 .footer__logo {
-  text-align: center;
   display: block;
+  text-align: center;
   padding-bottom: 3.125rem;
+}
+.footer__logo a {
   display: inline-block;
 }
 .footer a:has(.footer__logo):focus-visible {

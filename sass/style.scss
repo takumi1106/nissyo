@@ -810,9 +810,12 @@ input {
     }
 
     &__logo {
-        text-align: center;
         display: block;
+        text-align: center;
         padding-bottom: rem(50);
+    }
+
+    &__logo a {
         display: inline-block;
     }
 
