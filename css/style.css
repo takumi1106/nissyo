@@ -2216,7 +2216,10 @@ input:focus::placeholder {
 .contact__btn:hover, .contact__btn:focus-visible {
   background-color: #6AB5CE;
   color: #fff;
-  outline: none;
+}
+.contact__btn:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 4px;
 }
 
 /* ------------------------------- ここまで ------------------------------ */
@@ -2283,16 +2286,9 @@ input:focus::placeholder {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
-.content__options label {
-  display: flex;
-  align-items: center;
-  -moz-column-gap: 0.3125rem;
-       column-gap: 0.3125rem;
-}
-.content__options label:focus-within {
+.content__check:focus-visible {
   outline: 2px solid #000;
-  outline-offset: 2px;
+  outline-offset: 4px;
 }
 
 /* -------------------------- ここまで --------------------------------- */
