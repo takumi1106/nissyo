@@ -587,7 +587,6 @@ input:focus::placeholder {
   background-color: #3c6da6;
   padding: 1.875rem 0;
   color: #fff;
-  /* キーボードでフォーカスした時だけ有効 */
 }
 .footer__inner {
   max-width: 342px;
@@ -609,6 +608,11 @@ input:focus::placeholder {
   text-align: center;
   display: block;
   padding-bottom: 3.125rem;
+  display: inline-block;
+}
+.footer a:has(.footer__logo):focus-visible {
+  outline: 2px solid #F4A261;
+  outline-offset: 4px;
 }
 .footer__list {
   display: grid;
@@ -646,8 +650,9 @@ input:focus::placeholder {
     padding: 1.125rem 0.625rem;
   }
 }
-.footer__button:hover {
+.footer__button:hover, .footer__button:focus-visible {
   background-color: #2F7A3D;
+  outline: none;
   transition: 0.5s;
 }
 .footer__copy {
@@ -677,10 +682,6 @@ input:focus::placeholder {
     padding-bottom: 0;
     max-width: 25rem;
   }
-}
-.footer :focus-visible {
-  outline: 2px solid;
-  color: #F4A261;
 }
 
 /* ----------------------------- ここまで -------------------------------- */
@@ -2206,7 +2207,7 @@ input:focus::placeholder {
   padding: 0.9375rem 3.125rem;
   text-align: center;
   margin: 0 auto 6.25rem;
-  transition: 0.3s;
+  transition: 0.5s;
   cursor: pointer;
 }
 .contact__btn:hover, .contact__btn:focus-visible {
@@ -2550,6 +2551,12 @@ input:focus::placeholder {
   color: #fff;
   outline: none;
   transition: 0.3s;
+}
+
+/* スクロールストップ */
+html,
+body {
+  overscroll-behavior: none;
 }
 
 /* フォーカス */

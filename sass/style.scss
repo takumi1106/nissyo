@@ -813,6 +813,12 @@ input {
         text-align: center;
         display: block;
         padding-bottom: rem(50);
+        display: inline-block;
+    }
+
+    a:has(.footer__logo):focus-visible {
+        outline: 2px solid #F4A261;
+        outline-offset: 4px;
     }
 
     &__list {
@@ -848,11 +854,13 @@ input {
             height: rem(60);
             padding: rem(18) rem(10);
         }
-    }
 
-    &__button:hover {
-        background-color: #2F7A3D;
-        transition: 0.5s;
+        &:hover,
+        &:focus-visible {
+            background-color: #2F7A3D;
+            outline: none;
+            transition: 0.5s;
+        }
     }
 
     &__copy {
@@ -884,12 +892,6 @@ input {
             padding-bottom: 0;
             max-width: rem(400);
         }
-    }
-
-    /* キーボードでフォーカスした時だけ有効 */
-    :focus-visible {
-        outline: 2px solid;
-        color: #F4A261;
     }
 }
 
@@ -1637,7 +1639,7 @@ input {
         padding: rem(15) rem(50);
         text-align: center;
         margin: 0 auto rem(100);
-        transition: 0.3s;
+        transition: 0.5s;
         cursor: pointer;
 
         &:hover,
@@ -1904,6 +1906,12 @@ input {
             transition: 0.3s;
         }
     }
+}
+
+/* スクロールストップ */
+html,
+body {
+    overscroll-behavior: none;
 }
 
 /* フォーカス */

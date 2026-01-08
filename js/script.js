@@ -62,17 +62,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger-morph');
     const nav = document.querySelector('.nav-morph');
 
-    if (hamburger && nav) {
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            nav.classList.toggle('active');
+    if (!hamburger || !nav) return;
 
-            const isOpen = hamburger.classList.contains('active');
-            hamburger.setAttribute('aria-expanded', isOpen);
-            nav.setAttribute('aria-hidden', !isOpen);
-            document.body.style.overflow = isOpen ? 'hidden' : '';
-        });
-    }
+    const openMenu = () => {
+        hamburger.classList.add('active');
+        nav.classList.add('active');
+        hamburger.setAttribute('aria-expanded', 'true');
+        nav.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeMenu = () => {
+        hamburger.classList.remove('active');
+        nav.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        nav.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    };
+
+    // ハンバーガークリック
+    hamburger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        hamburger.classList.contains('active') ? closeMenu() : openMenu();
+    });
+
+    // navクリック判定
+    nav.addEventListener('click', (e) => {
+        // ナビリンクをクリックした場合は閉じない（遷移優先）
+        if (e.target.closest('.nav-morph__link')) return;
+
+        // それ以外（背景・余白）をタップしたら閉じる
+        closeMenu();
+    });
+
+    // ESCキー
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && hamburger.classList.contains('active')) {
+            closeMenu();
+        }
+    });
 });
 //================= ふわっと表示エフェクト(fade-in) ======================//
 document.addEventListener('DOMContentLoaded', () => {
@@ -151,4 +179,14 @@ backBtn.addEventListener('click', () => {
     confirmTitle.style.display = 'none';
     confirmLead.style.display = 'none';
     confirmArea.style.display = 'none';
+});
+//========================== スクロールストップ ============================//
+document.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+
+    if (scrollTop + windowHeight >= documentHeight) {
+        window.scrollTo(0, documentHeight - windowHeight);
+    }
 });
