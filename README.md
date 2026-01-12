@@ -29,3 +29,34 @@ Visual Studio Code / Figma / Photoshop / Illustrator / Formspree / ChatGPT
 ## microCMS
 - 管理者画面では API スキーマを設計し、不要な項目を入力できないようにしました。
 - お知らせは最新3件のみ表示されるようにし、情報が過多にならないよう配慮しました。
+
+## サイトURL
+[日昇工業所サイト](https://goto-take-1106.secret.jp/nissyo/)
+
+![トップページスクリーンショット](./images/screenshot-top.png)
+
+## ファイル構成
+
+/nissyo
+├─ index.html
+├─ service.html
+├─ project.html
+├─ client.html
+├─ contact.html
+├─ css/
+│   └─ style.css
+├─ sass/
+│   └─ style.scss
+├─ js/
+│   └─ script.js
+├─ images/
+│   └─ 各種画像
+└─ README.md
+
+※将来的に以下のページを追加予定です：
+- 404.html（存在しないページへの対応）
+- thanks.html（お問い合わせ完了後のサンクスページ）
+
+## ライセンス
+このリポジトリのコンテンツは「日昇工業所」に帰属します。
+商用利用や無断転載は禁止です。
