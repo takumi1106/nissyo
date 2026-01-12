@@ -54,6 +54,10 @@ Visual Studio Code / Figma / Photoshop / Illustrator / Formspree / ChatGPT
 └─ README.md
 
 ※将来的に以下のページを追加予定です：
+  ├─ 404.html（存在しないページへの対応）
+  └─ thanks.html（お問い合わせ完了後のサンクスページ）
+
+※将来的に以下のページを追加予定です：
 - 404.html（存在しないページへの対応）
 - thanks.html（お問い合わせ完了後のサンクスページ）
 
