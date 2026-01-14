@@ -767,34 +767,19 @@ input {
             display: block;
             transition: transform 0.3s ease;
         }
-
-        .nav-morph__text__active {
-            border-top: 1px solid $color-base;
-            border-bottom: 1px solid $color-base;
-            padding-top: rem(8);
-            padding-bottom: rem(8);
-            color: #ffdd44;
-            pointer-events: none;
-        }
-
-        .nav-morph__hover {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            transform: translateY(0%);
-        }
-
-        &:hover {
-            .nav-morph__text {
-                transform: translateY(-100%);
-            }
-
-            .nav-morph__hover {
-                transform: translateY(-100%);
-            }
-        }
     }
+}
+
+.nav-morph__text__active {
+    display: inline-block;
+    font-size: 28px;
+    border-top: 1px solid $color-base;
+    border-bottom: 1px solid $color-base;
+    padding-top: rem(8);
+    padding-bottom: rem(8);
+    margin: rem(20);
+    color: #ffdd44;
+    pointer-events: none;
 }
 
 /* ----------------------------- ここまで -------------------------------- */

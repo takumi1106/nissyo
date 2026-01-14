@@ -61,43 +61,101 @@ window.addEventListener("scroll", function () {
 document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger-morph');
     const nav = document.querySelector('.nav-morph');
+    const links = nav?.querySelectorAll('.nav-morph__link');
 
-    if (!hamburger || !nav) return;
+    if (!hamburger || !nav || !links) return;
 
+    const isDesktop = () =>
+        window.matchMedia('(min-width: 1024px)').matches;
+
+    /* =========================
+       フォーカス制御
+    ========================= */
+    const disableLinks = () => {
+        links.forEach(link => {
+            link.tabIndex = -1;
+        });
+    };
+
+    const enableLinks = () => {
+        links.forEach(link => {
+            link.tabIndex = 0;
+        });
+    };
+
+    /* =========================
+       メニュー開く
+    ========================= */
     const openMenu = () => {
+        if (isDesktop()) return;
+
+        nav.hidden = false;                // ★ aria-hiddenは使わない
+        requestAnimationFrame(() => {
+            nav.classList.add('active');
+        });
+
         hamburger.classList.add('active');
-        nav.classList.add('active');
         hamburger.setAttribute('aria-expanded', 'true');
-        nav.setAttribute('aria-hidden', 'false');
+
+        enableLinks();
         document.body.style.overflow = 'hidden';
+
+        links[0]?.focus();
     };
 
+    /* =========================
+       メニュー閉じる
+    ========================= */
     const closeMenu = () => {
-        hamburger.classList.remove('active');
         nav.classList.remove('active');
+        hamburger.classList.remove('active');
         hamburger.setAttribute('aria-expanded', 'false');
-        nav.setAttribute('aria-hidden', 'true');
+
+        disableLinks();
         document.body.style.overflow = '';
+
+        nav.addEventListener(
+            'transitionend',
+            () => {
+                if (!nav.classList.contains('active')) {
+                    nav.hidden = true;
+                }
+            },
+            { once: true }
+        );
+
+        hamburger.focus();
     };
 
-    // ハンバーガークリック
+    /* =========================
+       初期状態
+    ========================= */
+    nav.hidden = true;
+    disableLinks();
+
+    /* =========================
+       イベント
+    ========================= */
     hamburger.addEventListener('click', (e) => {
         e.stopPropagation();
-        hamburger.classList.contains('active') ? closeMenu() : openMenu();
+        hamburger.classList.contains('active')
+            ? closeMenu()
+            : openMenu();
     });
 
-    // navクリック判定
     nav.addEventListener('click', (e) => {
-        // ナビリンクをクリックした場合は閉じない（遷移優先）
         if (e.target.closest('.nav-morph__link')) return;
-
-        // それ以外（背景・余白）をタップしたら閉じる
         closeMenu();
     });
 
-    // ESCキー
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && hamburger.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+
+    window.addEventListener('resize', () => {
+        if (isDesktop()) {
             closeMenu();
         }
     });
