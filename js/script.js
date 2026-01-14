@@ -182,71 +182,87 @@ const confirmBtn = document.getElementById('confirmBtn');
 const confirmArea = document.getElementById('confirmArea');
 const confirmTitle = document.getElementById('confirmTitle');
 const confirmLead = document.getElementById('confirmLead');
-
 const form = document.getElementById('contactForm');
-
-confirmBtn.addEventListener('click', () => {
-
-    if (!form.checkValidity()) {
-        // ブラウザ標準バリデーションを表示
-        form.reportValidity();
-
-        // ★ ヘッダーに隠れないようにスクロール補正
-        const firstInvalid = form.querySelector(':invalid');
-        if (firstInvalid) {
-            const headerHeight = document.querySelector('.header').offsetHeight || 80;
-            const top = firstInvalid.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20; // 20px余白
-            window.scrollTo({ top: top, behavior: 'smooth' });
-        }
-
-        return;
-    }
-
-    // --- 確認画面表示の処理 ---
-    document.querySelectorAll('.contact__inner form > article, #confirmBtn')
-        .forEach(el => el.style.display = 'none');
-
-    confirmTitle.style.display = 'block';
-    confirmLead.style.display = 'block';
-    confirmArea.style.display = 'block';
-
-    document.getElementById('confirm-name').textContent =
-        document.getElementById('name').value;
-    document.getElementById('confirm-company').textContent =
-        document.getElementById('company-name').value;
-    document.getElementById('confirm-email').textContent =
-        document.getElementById('email').value;
-    document.getElementById('confirm-tel').textContent =
-        document.getElementById('tel').value;
-    document.getElementById('confirm-address').textContent =
-        document.getElementById('address').value;
-    document.getElementById('confirm-message').textContent =
-        document.getElementById('message').value;
-
-    const checked = document.querySelector('input[name="content-type"]:checked');
-    document.getElementById('confirm-content').textContent =
-        checked ? checked.parentNode.textContent.trim() : '';
-
-    // ★ 確認画面スクロール補正
-    const headerHeight = document.querySelector('.header').offsetHeight || 80;
-    const top = confirmTitle.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-    window.scrollTo({
-        top: top,
-        behavior: 'smooth'
-    });
-});
 const backBtn = document.getElementById('backBtn');
 
-backBtn.addEventListener('click', () => {
-    // 入力画面を再表示
-    document.querySelectorAll('.contact__inner form > article, #confirmBtn')
-        .forEach(el => el.style.display = '');
+// ヘッダー高さ取得（スマホ対応）
+function getHeaderHeight() {
+    let header = document.querySelector('.header');
+    let height = header ? header.offsetHeight : 80;
 
-    // 確認系を非表示
-    confirmTitle.style.display = 'none';
-    confirmLead.style.display = 'none';
-    confirmArea.style.display = 'none';
-});
+    // スマホサイズ（768px以下）なら少し補正
+    if (window.innerWidth <= 768) {
+        height = height * 1.4; // 調整値
+    }
+    return height;
+}
+
+// スクロール補正関数
+function scrollToElement(el, offset = 0) {
+    const headerHeight = getHeaderHeight();
+    const top = el.getBoundingClientRect().top + window.pageYOffset - headerHeight - offset;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+}
+
+// 確認ボタン押下
+if (confirmBtn) {
+    confirmBtn.addEventListener('click', () => {
+        if (!form.checkValidity()) {
+            form.reportValidity();
+
+            const firstInvalid = form.querySelector(':invalid');
+            if (firstInvalid) {
+                scrollToElement(firstInvalid, 20); // 余白20px
+            }
+            return;
+        }
+
+        // 入力画面非表示
+        document.querySelectorAll('.contact__inner form > article, #confirmBtn')
+            .forEach(el => el.style.display = 'none');
+
+        // 確認画面表示
+        confirmTitle.style.display = 'block';
+        confirmLead.style.display = 'block';
+        confirmArea.style.display = 'block';
+
+        document.getElementById('confirm-name').textContent =
+            document.getElementById('name').value;
+        document.getElementById('confirm-company').textContent =
+            document.getElementById('company-name').value;
+        document.getElementById('confirm-email').textContent =
+            document.getElementById('email').value;
+        document.getElementById('confirm-tel').textContent =
+            document.getElementById('tel').value;
+        document.getElementById('confirm-address').textContent =
+            document.getElementById('address').value;
+        document.getElementById('confirm-message').textContent =
+            document.getElementById('message').value;
+
+        const checked = document.querySelector('input[name="content-type"]:checked');
+        document.getElementById('confirm-content').textContent =
+            checked ? checked.parentNode.textContent.trim() : '';
+
+        // 確認画面スクロール
+        scrollToElement(confirmTitle);
+    });
+}
+
+if (backBtn) {
+    backBtn.addEventListener('click', () => {
+        // 入力画面を再表示
+        document.querySelectorAll('.contact__inner form > article, #confirmBtn')
+            .forEach(el => el.style.display = '');
+
+        // 確認画面非表示
+        confirmTitle.style.display = 'none';
+        confirmLead.style.display = 'none';
+        confirmArea.style.display = 'none';
+
+        // 入力画面スクロール（トップ付近に戻す）
+        scrollToElement(form);
+    });
+}
 //========================== スクロールストップ ============================//
 document.addEventListener('scroll', () => {
     const scrollTop = window.scrollY;
