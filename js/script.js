@@ -188,10 +188,21 @@ const form = document.getElementById('contactForm');
 confirmBtn.addEventListener('click', () => {
 
     if (!form.checkValidity()) {
+        // ブラウザ標準バリデーションを表示
         form.reportValidity();
+
+        // ★ ヘッダーに隠れないようにスクロール補正
+        const firstInvalid = form.querySelector(':invalid');
+        if (firstInvalid) {
+            const headerHeight = document.querySelector('.header').offsetHeight || 80;
+            const top = firstInvalid.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20; // 20px余白
+            window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+
         return;
     }
 
+    // --- 確認画面表示の処理 ---
     document.querySelectorAll('.contact__inner form > article, #confirmBtn')
         .forEach(el => el.style.display = 'none');
 
@@ -201,19 +212,14 @@ confirmBtn.addEventListener('click', () => {
 
     document.getElementById('confirm-name').textContent =
         document.getElementById('name').value;
-
     document.getElementById('confirm-company').textContent =
         document.getElementById('company-name').value;
-
     document.getElementById('confirm-email').textContent =
         document.getElementById('email').value;
-
     document.getElementById('confirm-tel').textContent =
         document.getElementById('tel').value;
-
     document.getElementById('confirm-address').textContent =
         document.getElementById('address').value;
-
     document.getElementById('confirm-message').textContent =
         document.getElementById('message').value;
 
@@ -221,9 +227,12 @@ confirmBtn.addEventListener('click', () => {
     document.getElementById('confirm-content').textContent =
         checked ? checked.parentNode.textContent.trim() : '';
 
-    confirmTitle.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+    // ★ 確認画面スクロール補正
+    const headerHeight = document.querySelector('.header').offsetHeight || 80;
+    const top = confirmTitle.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+    window.scrollTo({
+        top: top,
+        behavior: 'smooth'
     });
 });
 const backBtn = document.getElementById('backBtn');
