@@ -40,8 +40,6 @@ Visual Studio Code / Figma / Photoshop / Illustrator / Formspree / ChatGPT
 ## サイトURL
 [日昇工業所サイト](https://goto-take-1106.secret.jp/nissyo/)
 
-![トップページスクリーンショット](./images/screenshot-top.png)
-
 ## ファイル構成
 
 /nissyo
