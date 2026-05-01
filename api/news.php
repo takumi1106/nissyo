@@ -1,11 +1,11 @@
 <?php
 // PHPでAPIキーを隠す
-$api_key = "*************";
+$api_key = "***********";
 
 // microCMS APIを呼ぶ
 $curl = curl_init();
 curl_setopt_array($curl, [
-    CURLOPT_URL => "*****************",
+    CURLOPT_URL => "**********",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_HTTPHEADER => [
         "X-MICROCMS-API-KEY: {$api_key}"
